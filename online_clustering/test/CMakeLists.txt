@@ -9,3 +9,5 @@ include_directories(${ONLINECLUST_HMP_INCLUDE})
 add_executable(omp_test hmp/omp_test.cpp)
 target_link_libraries(omp_test ${ONLINECLUST_HMP_LIBRARY})
 
+add_executable(hmp_test hmp/hmp_test.cpp)
+target_link_libraries(hmp_test ${ONLINECLUST_HMP_LIBRARY}  ${ONLINECLUST_DATAPROC_LIBRARY})

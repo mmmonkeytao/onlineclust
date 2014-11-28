@@ -1,10 +1,11 @@
 #include "data_proc.h"
 #include "omp.h"
 #include <opencv2/opencv.hpp>
+#include <Eigen/Dense>
+#include <Eigen/Core>
 
 using namespace onlineclust;
 using namespace cv;
-using namespace Eigen;
 
 int main(){
 
@@ -29,11 +30,16 @@ int main(){
     //test.ShowImgDim(subImage);
     //test.ImgShow(patch, "subimage");
     //cv::waitKey(0);
-    //MatrixXi im{patch.rows,patch.cols};
-    
-    //Eigen::Map<MatrixXi,RowMajor, Stride<1,Dynamic> > im(patch.data, patch.rows, patch.cols, Stride<1,Dynamic>(1, patch.rows));
 
-    
+
+    Map<Matrix<int,Dynamic,Dynamic>, ColMajor, Stride<Dynamic,1> > im(reinterpret_cast<int*>(patch.data), patch.cols, patch.rows, Stride<Dynamic,1>(patch.rows,1));
+
+    int array[24];
+    for(int i = 0; i < 24; ++i) array[i] = i;
+    cout << Map<MatrixXi, ColMajor, Stride<Dynamic,2> >
+      (array, 3, 3, Stride<Dynamic,2>(8, 2))
+    	 << endl;
+
   }
   catch(int e){};
 

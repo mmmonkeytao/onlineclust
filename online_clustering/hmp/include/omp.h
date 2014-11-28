@@ -62,7 +62,16 @@ class OMP{
   /// @return 
   ///
   void ompcore(double D[], double x[], double DtX[], double XtX[], double G[], unsigned n, unsigned m, unsigned L, int T, double eps, int gamma_mode, int profile, double msg_delta, int erroromp);
-
+ 
+  /// 
+  ///
+  /// @param input 
+  /// @param nchnl 
+  /// @param psz 
+  /// @param stepsz 
+  /// @param patch2dMat 
+  /// 
+  void im2patchMat(MatrixXd const& input, unsigned nchnl, unsigned psz[2], unsigned stepsz[2], MatrixXd &patch2dMat);
 
   private:
   // Input: a vector

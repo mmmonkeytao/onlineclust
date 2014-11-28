@@ -8,6 +8,22 @@
 using namespace std;
 using namespace onlineclust;
 
+void OMP::im2patchMat(MatrixXd const& input, unsigned nchnl, unsigned psz[2], unsigned stepsz[2], MatrixXd &patch2dMat)
+{
+  unsigned npatchx = ceil((float)input.cols()/(float)stepsz[0]);
+  unsigned npatchy = ceil((float)input.rows()/(float)stepsz[1]);
+  patch2dMat = MatrixXd{nchnl*psz[0]*psz[1], npatchx*npatchy};
+
+  for(unsigned k = 0; k < nchnl; ++k)
+    for(int j = 0; j < input.rows(); ++j)
+      for(int i = 0; i < input.cols(); ++i)
+	{
+	  
+	}
+
+
+}
+
 // void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, unsigned SPlevel, 
 //  			      MatrixXd &Gamma )
 // {
@@ -104,7 +120,7 @@ void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, unsigned SPlevel,
       // retrieve sub-vector of alpha(i)
       a_I.conservativeResize(j+1,1);
       a_I(j) = alpha(k,i);
-      r_I = VectorXd{j+1};
+      r_I = VectorXd(j+1);
       LL_solver(L, a_I, "LL", r_I);
       
       // get G_I

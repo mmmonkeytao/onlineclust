@@ -4,8 +4,8 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
-using namespace cv;
 using namespace std;
+using namespace cv;
 
 namespace onlineclust{
 
@@ -13,21 +13,32 @@ class DataProc{
 
 public:
 
-  DataProc(): depthImage(), rgbImage() {};
+  DataProc(){};
   ~DataProc(){};
 
-  void RGBD_reader(const char*, const char*);
-  void ImageVis() const;
-  void ImgShow()const;
-
-  const Mat& getRGBImg()const{ return rgbImage; };
-  const Mat& getDepthImg()const{ return depthImage; };  
-  void ShowImgDim()const;
+  // Note: specially for visualizing data set from
+  // http://rgbd-dataset.cs.washington.edu/dataset/
+  // convert image to Mat
+  // file: file directory/name
+  // type: "RGB" or "Depth"
+  // matImage: Mat type of image
+  void RGBD_reader(const char*file, char*type, cv::Mat&matImage);
+  
+  void ImgShow(cv::Mat const&, const char*)const;  
+  void ShowImgDim(cv::Mat const&)const;
+  
+  /// image to patch matrix as output 
+  /// in which each column represents patch from  
+  /// every channel, the order is [r;g;b].
+  /// 
+  // template<typename T>
+  //inline void img2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &outPatch2dMat);
+void im2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &patch2dMat);
 
 private:
 
-  Mat depthImage;
-  Mat rgbImage;
+  // Mat depthImage;
+  // Mat rgbImage;
 
   };
 

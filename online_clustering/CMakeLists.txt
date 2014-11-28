@@ -22,7 +22,8 @@ set(CMakeScripts_MODULE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 set(CMAKE_MODULE_PATH ${CMakeScripts_MODULE_DIR})
 
 # set compiler flags for c++
-set(CMAKE_CXX_FLAGS "-std=c++11 -Wall")
+set(CMAKE_CXX_FLAGS "-std=c++11 -Wall") 
+#-Werror -Wfatal-errors")
 
 # Bring in helper functions to make dealing with cache internal variables easier
 include(CacheInternalHelpers)
