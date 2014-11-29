@@ -33,7 +33,13 @@ public:
   /// 
   // template<typename T>
   //inline void img2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &outPatch2dMat);
-void im2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &patch2dMat);
+  void im2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &patch2dMat);
+
+  /// 
+  ///
+  /// @param im 
+  ///
+  void reconstructIm(Mat &im, int pszh, int pszw, int pnh, int pnw, Mat &out);
 
 private:
 

@@ -10,36 +10,111 @@ using namespace cv;
 int main(){
 
   DataProc test;
+  OMP omp;
   try{
-    Mat Image;
-    char str[] = "desk_1_1.png";
-    char type[] = "RGB";
-    test.RGBD_reader(str, type,Image);
-    //test.ShowImgDim(Image);
-    //test.ImgShow(Image,"original");
-    //cout << Image.step[0] *Image.step[1] << endl;
-    // get sub-image
-    //float centx = Image.rows/2;
-    //float centy = Image.cols/2;
-    Mat patch;
-    test.im2patchMat(Image,{5,5},{1,1},patch);
-    //test.ShowImgDim(patch);
-    //Mat subImage;
-    //getRectSubPix(patch, {5,5}, {30,10000}, subImage);
-    //cout << subImage << endl;
-    //test.ShowImgDim(subImage);
-    //test.ImgShow(patch, "subimage");
-    //cv::waitKey(0);
 
+    // { // test r g b channel
+    //   Mat Image;
+    //   char str[] = "desk_1_1.png";
+    //   char type[] = "RGB";
+    //   test.RGBD_reader(str, type,Image);
 
-    Map<Matrix<int,Dynamic,Dynamic>, ColMajor, Stride<Dynamic,1> > im(reinterpret_cast<int*>(patch.data), patch.cols, patch.rows, Stride<Dynamic,1>(patch.rows,1));
+    //   int rows = Image.rows, cols = Image.cols;
+    //   typedef Vec<uint8_t, 3> Vec3u8;
+    //   Mat R{rows,cols,CV_8UC3,Scalar::all(0)}, G{rows,cols,CV_8UC3,Scalar::all(0)}, B{rows,cols,CV_8UC3, Scalar::all(0)};
 
-    int array[24];
-    for(int i = 0; i < 24; ++i) array[i] = i;
-    cout << Map<MatrixXi, ColMajor, Stride<Dynamic,2> >
-      (array, 3, 3, Stride<Dynamic,2>(8, 2))
-    	 << endl;
+    //   for(int j = 0; j < cols; ++j)
+    // 	for(int i = 0; i < rows; ++i){
+    // 	  Vec3u8 v = Image.at<Vec3u8>(i,j);
+    // 	  B.at<Vec3u8>(i,j) = Vec3u8{v[0],0,0};
+    // 	  G.at<Vec3u8>(i,j) = Vec3u8{0,v[1],0};
+    // 	  R.at<Vec3u8>(i,j) = Vec3u8{0,0,v[2]};
+    // 	}	  
 
+    //   imwrite("R.png",R);
+    //   imwrite("G.png",G);
+    //   imwrite("B.png",B);
+    // }
+
+    {
+      // test ROI function
+      // Mat Image;
+      // char str[] = "desk_1_1.png";
+      // char type[] = "RGB";
+      // test.RGBD_reader(str, type,Image);
+
+      // test.ShowImgDim(Image);
+      // test.ImgShow(Image,"original");
+      
+      // Mat subImage;
+      // getRectSubPix(Image, {40,40}, {30,30}, subImage);
+      
+      // test.ShowImgDim(subImage);
+      // test.ImgShow(subImage, "subimage");
+      // cv::waitKey(0);
+
+    }
+
+    {
+      // test patch transformation
+      // Mat Image;
+      // char str[] = "desk_1_1.png";
+      // char type[] = "RGB";
+      // test.RGBD_reader(str, type,Image);
+
+      // test.ShowImgDim(Image);
+      // //test.ImgShow(Image,"original");
+      
+      // Mat patch;
+      // test.im2patchMat(Image,{5,5},{1,1},patch);
+
+      // test.ShowImgDim(patch);
+      // cout << patch.at<double>(70,10000);
+    }
+
+    {
+      // test sparse coding
+      //test patch transformation
+      Mat Image;
+      char str[] = "desk_1_1.png";
+      char type[] = "RGB";
+      test.RGBD_reader(str, type,Image);
+
+      test.ShowImgDim(Image);
+      //test.ImgShow(Image,"original");
+      
+      Mat patch;
+      Size stepsz = {5,5};
+      Size psz = {5,5};
+      test.im2patchMat(Image,psz,stepsz,patch);
+
+      test.ShowImgDim(patch);
+      
+      MatrixXd D;
+      omp.loadDct("dic_1st_layer_5x5_rgbcrop.dat",75,150,D); 
+      
+      // convert Mat to MatrixXd
+      Map<MatrixXd, RowMajor, Stride<1,Dynamic> > 
+	im(reinterpret_cast<double*>(patch.data), patch.rows, patch.cols, Stride<1,Dynamic>(1,patch.cols));
+      
+      MatrixXd Gamma;
+      //MatrixXd rand{75,1}; rand.setRandom();
+      omp.Batch_OMP(im, D, 75, Gamma);
+      //cout << (rand - D*Gamma).norm()<<endl;
+
+      // reconstruct to original image 
+      int pnw = ceil((double)Image.cols / (double)stepsz.width);
+      int pnh = ceil((double)Image.rows / (double)stepsz.height);
+
+      MatrixXd m = D*Gamma;
+      Mat outMat{D.rows(), Gamma.cols(), CV_64FC1, m.data(), sizeof(double)*m.cols()};
+      Mat mat; 
+      
+      //Matr
+      test.reconstructIm(outMat, psz.height, psz.width, pnh, pnw, mat);
+      imwrite("desk_1_1_reconstr.png", mat);
+    }
+	
   }
   catch(int e){};
 

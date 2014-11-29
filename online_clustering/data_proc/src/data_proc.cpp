@@ -10,30 +10,63 @@ using namespace std;
 
 void DataProc::im2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &patch2dMat)
 {
+  typedef Vec<uint8_t, 3> Vec3u8;
+
   int nPatchx = ceil((float)input.cols/(float)stepSize.width);
   int nPatchy = ceil((float)input.rows/(float)stepSize.height);
-  patch2dMat = Mat{patchSize.width*patchSize.height*input.channels(),nPatchx * nPatchy, CV_16U};
+
+  patch2dMat = Mat{patchSize.width * patchSize.height * input.channels(),
+		   nPatchx * nPatchy, CV_64FC1};
   
   unsigned cols = 0;
-  char nchannels = input.channels();
-  int centx = 0, centy = 0;
-  Mat patch = Mat{patchSize.width, patchSize.height, input.depth()};
+  //  char nchannels = input.channels();
+  int srow = 0, scol = 0;
+  int chsize = patchSize.height * patchSize.width;
+  Mat patch = Mat{patchSize.height, patchSize.width, input.type()};
   
   for(int j = 0; j < nPatchy; ++j){
     for(int i = 0; i < nPatchy; ++i){
-      centx = i*stepSize.width;
-      centy = j*stepSize.height;
-      getRectSubPix(input, patchSize,{static_cast<float>(centx),static_cast<float>(centy)},patch,input.type());
+      scol = i*stepSize.width;
+      srow = j*stepSize.height;
+      getRectSubPix(input, patchSize,{static_cast<float>(srow),static_cast<float>(scol)},patch,input.type());
       // copy to output matrix patch2dMat
-      for(int k = 0; k < nchannels; ++k)
 	for(int m = 0; m < patchSize.height; ++m)
-	  for(int l = 0; l < patchSize.width; ++l){	     patch2dMat.at<unsigned>(l+m*patchSize.height+k*patchSize.width*patchSize.height, cols) = patch.at<unsigned>((l+k)*nchannels,m);
+	  for(int l = 0; l < patchSize.width; ++l){	     
+	    Vec3u8 v = patch.at<Vec3u8>(m,l);
+	    patch2dMat.at<double>(l+m*patchSize.width,cols) = (double)v[2]/255.0;
+	    patch2dMat.at<double>(l+m*patchSize.width + chsize, cols) = (double)v[1]/255.0;
+	    patch2dMat.at<double>(l+m*patchSize.width + 2*chsize, cols) = (double)v[0]/255.0;
 	  }
       ++cols;
     }
   }      
 }
 
+void DataProc::reconstructIm(Mat &im, int pszh, int pszw, int pnh, int pnw, Mat &mat)
+{
+  mat = Mat{pszh*pnh, pszw*pnw, CV_8UC3};
+  typedef Vec<uint8_t, 3> Vec3u8;
+  int psz = pszh * pszw;
+
+  for(int j = 0; j < pnh; ++j)
+    for(int i = 0; i < pnw; ++i){
+      int sw = i * pszw;
+      int sh = j * pszh;
+      int pth = i + j*pnw;
+  
+      for(int l = 0; l < pszh; ++l)
+	for(int k = 0; k < pszw; ++k){
+	  Vec3u8 v;
+	  v[2] = static_cast<uint8_t>(im.at<double>(k+l*pszw, pth) * 255);
+	  v[1] = static_cast<uint8_t>(im.at<double>(k+l*pszw+psz, pth) * 255);
+	  v[0] = static_cast<uint8_t>(im.at<double>(k+l*pszw+psz*2, pth) * 255);
+
+	  mat.at<Vec3u8>(sh+l, sw+k) = v;
+
+	}
+    }
+
+}
 
 void DataProc::RGBD_reader(const char *file, char*type, Mat&matImage)
 {
@@ -41,13 +74,21 @@ void DataProc::RGBD_reader(const char *file, char*type, Mat&matImage)
 	    << file << endl; 
   
   if(!strcmp(type, "RGB")){
-    matImage = imread(file,1);
-    if(matImage.channels()!=3 || !matImage.data)throw runtime_error("\nError reading Image.\n");
-    matImage.convertTo(matImage, CV_8U);
+    
+    matImage = imread(file,CV_LOAD_IMAGE_COLOR);
+    if(matImage.channels()!=3 || !matImage.data)
+      throw runtime_error("\nError reading Image.\n");
+
+    matImage.convertTo(matImage, CV_8U); //8 bit unsigned
+
   } else if(!strcmp(type, "Depth")){
-    matImage = imread(file, 0);
-    if(matImage.channels()!=1)throw runtime_error("\nError reading Image\n");
-    matImage.convertTo(matImage, CV_16U);
+
+    matImage = imread(file, CV_LOAD_IMAGE_GRAYSCALE);
+
+    if(matImage.channels()!=1)
+      throw runtime_error("\nError reading Image\n");
+
+    matImage.convertTo(matImage, CV_16U); // 16bit unsigned
   }
   else {throw runtime_error("\nUnknown type of image.\n");}
 }

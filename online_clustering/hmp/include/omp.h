@@ -73,6 +73,9 @@ class OMP{
   /// 
   void im2patchMat(MatrixXd const& input, unsigned nchnl, unsigned psz[2], unsigned stepsz[2], MatrixXd &patch2dMat);
 
+
+  void loadDct(const char* file,int rows, int cols, MatrixXd &);
+
   private:
   // Input: a vector
   // output: maxIdx 
