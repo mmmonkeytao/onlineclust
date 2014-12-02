@@ -3,6 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include <Eigen/Dense>
 
 using namespace std;
 using namespace cv;
@@ -33,13 +34,20 @@ public:
   /// 
   // template<typename T>
   //inline void img2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &outPatch2dMat);
-  void im2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &patch2dMat);
+  void im2patchMat(Mat const& input, Size patchSize, Size stepSize, Mat &patch2dMat);
+
+  void im2patchMat(Mat const& input, Size patchSize, Size stepSize, Eigen::MatrixXd &patch2dMat);
 
   /// 
   ///
   /// @param im 
   ///
-  void reconstructIm(Mat &im, int pszh, int pszw, int pnh, int pnw, Mat &out);
+  void reconstructIm(Mat &im, Size imSize, Size patch, Size stepsz, Mat &mat);
+
+  void reconstructIm(Eigen::MatrixXd &im, Size imSize, Size patch, Size stepsz, Mat &mat);
+
+
+  void add_dc(Eigen::MatrixXd&);
 
 private:
 
