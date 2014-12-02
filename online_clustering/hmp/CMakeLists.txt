@@ -1,5 +1,6 @@
 set(SOURCES src/hmp.cpp
-            src/omp.cpp )
+            src/omp.cpp)
+	    #src/helper.cpp 
 
 set(HEADER_SUBDIR "include")
 
