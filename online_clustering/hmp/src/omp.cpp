@@ -10,21 +10,34 @@ using namespace std;
 using namespace onlineclust;
 
 
-void OMP::im2patchMat(MatrixXd const& input, uint nchnl, uint psz[2], uint stepsz[2], MatrixXd &patch2dMat)
+void OMP::im2patchMat(MatrixXd const& input, unsigned nchnl, unsigned psz[2], unsigned stepsz[2], MatrixXd &patch2dMat)
 {
-  uint npatchx = ceil((float)input.cols()/(float)stepsz[0]);
-  uint npatchy = ceil((float)input.rows()/(float)stepsz[1]);
+  unsigned npatchx = ceil((float)input.cols()/(float)stepsz[0]);
+  unsigned npatchy = ceil((float)input.rows()/(float)stepsz[1]);
   patch2dMat = MatrixXd{nchnl*psz[0]*psz[1], npatchx*npatchy};
-  
-  for(uint k = 0; k < nchnl; ++k)
+
+  for(unsigned k = 0; k < nchnl; ++k)
     for(int j = 0; j < input.rows(); ++j)
-      for(int i = 0; i < input.cols(); ++i){
-	
+      for(int i = 0; i < input.cols(); ++i)
+	{
 	  
 	}
 }
 
-// void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, uint SPlevel, 
+void OMP::loadDct(const char* file, int rows, int cols, MatrixXd& D)
+{
+  ifstream input(file);
+  D = MatrixXd{rows, cols};
+
+  cout << "Loading dictionary:\n";
+  for(int j = 0; j < rows; ++j)
+    for(int i = 0; i < cols; ++i)
+      input >> D(j,i);
+
+  cout << "Load completes. Dictionary size is: " << D.rows() << "x" << D.cols() << endl;
+}
+
+// void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, unsigned SPlevel, 
 //  			      MatrixXd &Gamma )
 // {
 //   auto Xrow = X.rows(), Xcol = X.cols(), Drow = D.rows(), Dcol = D.cols();
@@ -45,11 +58,11 @@ void OMP::im2patchMat(MatrixXd const& input, uint nchnl, uint psz[2], uint steps
 //   for(auto i = 0; i < Xcol; ++i){
 //     VectorXd alpha = alpha0.col(i);
 //     // store max_k
-//     vector<uint> I;
+//     vector<unsigned> I;
 //     VectorXd gamma_I;
 //     // inner loop for no. of atoms in D
-//     for(uint j = 0; j < SPlevel; ++j){
-//       uint k;
+//     for(unsigned j = 0; j < SPlevel; ++j){
+//       unsigned k;
 //       maxIdxVec(alpha, k);
 //       I.push_back(k);
       
@@ -57,10 +70,10 @@ void OMP::im2patchMat(MatrixXd const& input, uint nchnl, uint psz[2], uint steps
 //       MatrixXd G_II{j+1, j+1};
 //       MatrixXd G_I{Dcol,j+1};
 //       VectorXd a_I{j+1};
-//       for(uint k1 = 0; k1 < I.size(); ++k1){
+//       for(unsigned k1 = 0; k1 < I.size(); ++k1){
 // 	a_I(k1) = alpha0(I[k1],i);
 // 	G_I.col(k1) = G.col(I[k1]);
-// 	for(uint k2 = 0; k2 < I.size(); ++k2){
+// 	for(unsigned k2 = 0; k2 < I.size(); ++k2){
 	  
 // 	  G_II(k2,k1) = G(I[k2],I[k1]);
 // 	}
@@ -75,7 +88,7 @@ void OMP::im2patchMat(MatrixXd const& input, uint nchnl, uint psz[2], uint steps
 //   }
 // }
 
-void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, uint SPlevel, 
+void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, unsigned SPlevel, 
 			      MatrixXd &Gamma )
 {
   auto Xrow = X.rows(), Xcol = X.cols(), Drow = D.rows(), Dcol = D.cols();
@@ -96,15 +109,15 @@ void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, uint SPlevel,
   // iteration no. of obersations in X
   for(auto i = 0; i < Xcol; ++i){
     // I stores ordered max_k
-    vector<uint> I;
+    vector<unsigned> I;
     
-    uint j = 0; 
+    unsigned j = 0; 
     // initialize L
     MatrixXd L{1,1}; L << 1; 
     // initialize vector for if same atom is selected
     vector<bool> selected(Dcol,false);
     // find index k at ith col of X which Argmax_k{|a_k|}
-    uint k;
+    unsigned k;
     // maxIdxVec(alpha.col(i), k);
     // a_I sub-vector of alpha0, r_I sub-vector of Gamma(k,i)
     VectorXd a_I{1}, r_I{1};
@@ -118,9 +131,8 @@ void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, uint SPlevel,
     for(j = 0; j < SPlevel; ++j){
       
       maxIdxVec(alpha.col(i), k);
-      
-      double alpha_k = alpha(k,i);
-      if(selected[k] || alpha_k*alpha_k < 1e-14) break;
+
+      if(selected[k] || alpha(k,i)*alpha(k,i) < 1e-14) break;
       
       if(j > 0){
 	flag = true;
@@ -139,7 +151,7 @@ void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, uint SPlevel,
       
       // get G_I
       MatrixXd G_I{Dcol, j+1};
-      uint counter = 0;
+      unsigned counter = 0;
       for(auto &x: I){
 	G_I.col(counter++) = G.col(x);
       }
@@ -147,7 +159,7 @@ void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, uint SPlevel,
       alpha.col(i) = alpha0.col(i) - G_I * r_I;
     }
 
-    uint count = 0;
+    unsigned count = 0;
     if(I.size() > 0)
       for(auto &x: I) 
 	Gamma(x,i) = r_I(count++);
@@ -156,10 +168,23 @@ void OMP::Batch_OMP( MatrixXd const& X, MatrixXd const& D, uint SPlevel,
   
 }
 
-inline void OMP::updateL( MatrixXd & L, MatrixXd const& G, 
-			  vector<uint> const& I, uint k, bool& flag)
+
+inline void OMP::maxIdxVec(VectorXd const& v, unsigned &maxIdx)
 {
-  if(static_cast<uint>(L.rows()) != I.size()) 
+  double max = -1;
+  
+  for(auto i = 0; i < v.size(); i++){
+    if(fabs(v.coeff(i)) > max){
+      max = fabs(v.coeff(i));
+      maxIdx = i;
+    }
+  }
+}
+
+inline void OMP::updateL( MatrixXd & L, MatrixXd const& G, 
+			  vector<unsigned> const& I, unsigned k, bool& flag)
+{
+  if(static_cast<unsigned>(L.rows()) != I.size()) 
     throw runtime_error("\nInput dimensions do not match(updateL).\n");
 
   auto dim = L.cols();
@@ -209,50 +234,4 @@ inline void OMP::LL_solver(MatrixXd const& L, VectorXd const& b, const char* typ
         
      x(i) = (double)w(i)/L(i,i);
    }
-}
-
-void OMP::loadDct(const char* file, int rows, int cols, MatrixXd& D)
-{
-  ifstream input(file);
-  D = MatrixXd{rows, cols};
-
-  cout << "Loading dictionary:\n";
-  for(int j = 0; j < rows; ++j)
-    for(int i = 0; i < cols; ++i)
-      input >> D(j,i);
-
-  cout << "Load completes. Dictionary size is: " << D.rows() << "x" << D.cols() << endl;
-}
-
-
-void OMP::maxIdxVec(VectorXd const& v, uint &maxIdx)
-{
-  double max = -1;
-  
-  for(int i = 0; i < v.size(); i++){
-    if(fabs(v.coeff(i)) > max){
-      max = fabs(v.coeff(i));
-      maxIdx = i;
-    }
-  }
-}
-
-
-void OMP::remove_dc(MatrixXd &X, char* type)
-{
-  if(!strcmp(type, "column")){
-    
-    MatrixXd mean = MatrixXd::Zero(1,X.cols());
-    
-    for(int i = 0; i < X.rows(); ++i){
-      mean += X.row(i);
-    }
-    mean /= (double)X.rows();
-
-    for(int i = 0; i < X.rows(); ++i){
-      X.row(i) -= mean;
-    }
-  } else {
-    cerr << "\nUnknown type in OMP::remove_dc.\n";
-  }
 }

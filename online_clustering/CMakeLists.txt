@@ -22,7 +22,7 @@ set(CMakeScripts_MODULE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 set(CMAKE_MODULE_PATH ${CMakeScripts_MODULE_DIR})
 
 # set compiler flags for c++
-set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -g -O3") 
+set(CMAKE_CXX_FLAGS "-std=c++11 -Wall") 
 #-Werror -Wfatal-errors")
 
 # Bring in helper functions to make dealing with cache internal variables easier
@@ -50,16 +50,7 @@ set(BUILD_SHARED_LIBS true)
 option(USE_VTK "Use the VTK library for 3D visualization"  ON)
 option(USE_PCL "Use the PCL library for Point Clouds Processing" ON)
 
-# include pcl directories
-find_package(PCL 1.7 REQUIRED)
-include_directories(${PCL_INCLUDE_DIRS})
-link_directories(${PCL_LIBRARY_DIRS})
-add_definitions(${PCL_DEFINITIONS})
-
 # Find VTK if necessary
-find_package(VTK REQUIRED)
-include(${VTK_USE_FILE})
-
 #if(USE_VTK)	
 #endif()
 
@@ -76,7 +67,7 @@ set(ONLINECLUST_LIBRARIES
 )
 
 # add sub-directories
-add_subdirectory(pcloud)
+#add_subdirectory(3d_point_cloud)
 add_subdirectory(data_proc)
 add_subdirectory(hmp)
 
@@ -140,12 +131,6 @@ endif()
 #)
 
 #add_executable(${PROJECT_NAME} main_visRangeImage.cpp ${HEADER_FILES})
-#install (PROGRAMS "${CMAKE_BINARY_DIR}/bin/" COMPONENT RUNTIME DESTINATION "${C#MAKE_SOURCE_DIR}/test/exe/")
+install (PROGRAMS "${CMAKE_BINARY_DIR}/bin/" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/")
 
-install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/dataproc_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/dataproc/")
 
-install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/hmp_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/hmp/")
-
-install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/omp_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/hmp/")
-
-install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/pcloud_vis_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/pcloud/")

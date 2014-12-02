@@ -81,17 +81,10 @@ class OMP{
   ///
   void loadDct(const char* file,int rows, int cols, MatrixXd &);
 
-  /// 
-  ///
-  /// @param mat 
-  ///
-  void remove_dc( MatrixXd &, char* );
-
   private:
-
   // Input: a vector
   // output: maxIdx 
-  void maxIdxVec(VectorXd const& v, unsigned &maxIdx); 
+  inline void maxIdxVec(VectorXd const& v, unsigned &maxIdx); 
   
   // compute w in L*w = G_{I,k} and update L
   // 
