@@ -86,18 +86,18 @@ int main(){
     // cout << "new L is:\n" << L << endl;
   }
 
-  {
-    // test Batch_OMP code
-    MatrixXd X{25,1};
-    X.setRandom();
-    MatrixXd D{25,1000};
-    D.setRandom();
-    MatrixXd Gamma;
-    auto t1 = high_resolution_clock::now();
-    test.Batch_OMP(X,D,30,Gamma);
-    auto t2 = high_resolution_clock::now();
-    cout << "Sparse codes is:\n" << (X-D*Gamma).norm() << endl
-  	 << "computation time: (micros)" << duration_cast<milliseconds>(t2-t1).count() << endl;
-  }
+  // {
+  //   // test Batch_OMP code
+  //   MatrixXd X{15,1};
+  //   X.setRandom();
+  //   MatrixXd D{15,1000};
+  //   D.setRandom();
+  //   MatrixXd Gamma;
+  //   auto t1 = high_resolution_clock::now();
+  //   test.Batch_OMP(X,D,4,Gamma);
+  //   auto t2 = high_resolution_clock::now();
+  //   cout << "Sparse codes is:\n" << X-D*Gamma << endl
+  // 	 << "computation time: (micros)" << duration_cast<milliseconds>(t2-t1).count() << endl;
+  // }
   return 0;
 }

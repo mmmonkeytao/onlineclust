@@ -25,14 +25,13 @@ void DataProc::im2patchMat(Mat const& input, Size patchSize, Size stepSize,Mat &
   Mat patch = Mat{patchSize.height, patchSize.width, input.type()};
   
   for(int j = 0; j < nPatchy; ++j){
-    for(int i = 0; i < nPatchx; ++i){
+    for(int i = 0; i < nPatchy; ++i){
       scol = i*stepSize.width;
       srow = j*stepSize.height;
-
-      getRectSubPix(input, patchSize,{static_cast<float>(scol),static_cast<float>(srow)},patch,input.type());
-      // copy to output matrix patch2dMat, order r,g,b
-	for(int m = 0; m < patch.rows; ++m)
-	  for(int l = 0; l < patch.cols; ++l){	     
+      getRectSubPix(input, patchSize,{static_cast<float>(srow),static_cast<float>(scol)},patch,input.type());
+      // copy to output matrix patch2dMat
+	for(int m = 0; m < patchSize.height; ++m)
+	  for(int l = 0; l < patchSize.width; ++l){	     
 	    Vec3u8 v = patch.at<Vec3u8>(m,l);
 	    patch2dMat.at<double>(l+m*patchSize.width,cols) = (double)v[2]/255.0;
 	    patch2dMat.at<double>(l+m*patchSize.width + chsize, cols) = (double)v[1]/255.0;
@@ -56,16 +55,15 @@ void DataProc::reconstructIm(Mat &im, int pszh, int pszw, int pnh, int pnw, Mat 
       int pth = i + j*pnw;
   
       for(int l = 0; l < pszh; ++l)
-	for(int k = 0; k < pszw; ++k){	  
+	for(int k = 0; k < pszw; ++k){
 	  Vec3u8 v;
 	  v[2] = static_cast<uint8_t>(im.at<double>(k+l*pszw, pth) * 255);
 	  v[1] = static_cast<uint8_t>(im.at<double>(k+l*pszw+psz, pth) * 255);
 	  v[0] = static_cast<uint8_t>(im.at<double>(k+l*pszw+psz*2, pth) * 255);
-	  
-	  mat.at<Vec3u8>(sh+l,sw+k) = v;
 
-	} //break;
- 
+	  mat.at<Vec3u8>(sh+l, sw+k) = v;
+
+	}
     }
 
 }

@@ -73,12 +73,7 @@ class OMP{
   /// 
   void im2patchMat(MatrixXd const& input, unsigned nchnl, unsigned psz[2], unsigned stepsz[2], MatrixXd &patch2dMat);
 
-  /// 
-  ///
-  /// @param file 
-  /// @param rows 
-  /// @param cols 
-  ///
+
   void loadDct(const char* file,int rows, int cols, MatrixXd &);
 
   private:
@@ -88,7 +83,7 @@ class OMP{
   
   // compute w in L*w = G_{I,k} and update L
   // 
-  inline void updateL(MatrixXd& L, MatrixXd const& G_Ik, vector<unsigned> const& I, unsigned k, bool &flag);
+  inline void updateL(MatrixXd& L, MatrixXd const& G_Ik, vector<unsigned> const& I, unsigned k);
 
   // Input: low-triangular matrix L, rhs b type
   //        L*L^T *x = b(type "LL"),L*x = b(type "L")
