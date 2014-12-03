@@ -87,52 +87,23 @@ int main(){
       Size stepsz = {5,5};
       Size psz = {5,5};
       test.im2patchMat(Image,psz,stepsz,patch);
-<<<<<<< HEAD
-
-      test.ShowImgDim(patch);
-      
-      MatrixXd D;
-      omp.loadDct("dic_1st_layer_5x5_rgbcrop.dat",75,150,D); 
-      
-=======
       cout << "\nPatch Matrix Size: " << patch.rows() << "x" << patch.cols() << endl;
 
       MatrixXd D;
       omp.loadDct("rgbdevel_fulldic_1st_layer_5x5_crop.dat",75,150,D);  
->>>>>>> newbranch
       // convert Mat to MatrixXd
       //      Map<MatrixXd, RowMajor, Stride<1,Dynamic> > im(reinterpret_cast<double*>(patch.data), patch.rows, patch.cols, Stride<1,Dynamic>(1,patch.cols));
       
       MatrixXd Gamma;
-<<<<<<< HEAD
-      //MatrixXd rand{75,1}; rand.setRandom();
-      omp.Batch_OMP(im, D, 75, Gamma);
-      //cout << (rand - D*Gamma).norm()<<endl;
-
-      // reconstruct to original image 
-      int pnw = ceil((double)Image.cols / (double)stepsz.width);
-      int pnh = ceil((double)Image.rows / (double)stepsz.height);
-=======
-      
       //omp.remove_dc(patch, "column");
-      omp.Batch_OMP(patch, D, 30, Gamma); 
->>>>>>> newbranch
+      omp.Batch_OMP(patch, D, 40, Gamma); 
 
-      // reconstruct to original image 
-      MatrixXd m = D*Gamma;
-<<<<<<< HEAD
-      Mat outMat{D.rows(), Gamma.cols(), CV_64FC1, m.data(), sizeof(double)*m.cols()};
-      Mat mat; 
-      
-      //Matr
-      test.reconstructIm(outMat, psz.height, psz.width, pnh, pnw, mat);
-      imwrite("desk_1_1_reconstr.png", mat);
-=======
+      // reconstruct to original image
+      MatrixXd m = D * Gamma;
       Mat mat; 
       
       test.reconstructIm(m, Image.size(), psz, stepsz, mat);
       imwrite("cell_phone_1_1_6_crop_reconstruct.png", mat);
->>>>>>> newbranch
     }
 	
   }

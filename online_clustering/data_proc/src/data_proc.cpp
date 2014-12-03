@@ -56,19 +56,6 @@ void DataProc::im2patchMat(Mat const& input, Size psz, Size stpsz,MatrixXd &patc
   int npx = psz.height * psz.width;
 
   for(int j = 0; j < nPatchy; ++j){
-<<<<<<< HEAD
-    for(int i = 0; i < nPatchy; ++i){
-      scol = i*stepSize.width;
-      srow = j*stepSize.height;
-      getRectSubPix(input, patchSize,{static_cast<float>(srow),static_cast<float>(scol)},patch,input.type());
-      // copy to output matrix patch2dMat
-	for(int m = 0; m < patchSize.height; ++m)
-	  for(int l = 0; l < patchSize.width; ++l){	     
-	    Vec3u8 v = patch.at<Vec3u8>(m,l);
-	    patch2dMat.at<double>(l+m*patchSize.width,cols) = (double)v[2]/255.0;
-	    patch2dMat.at<double>(l+m*patchSize.width + chsize, cols) = (double)v[1]/255.0;
-	    patch2dMat.at<double>(l+m*patchSize.width + 2*chsize, cols) = (double)v[0]/255.0;
-=======
     for(int i = 0; i < nPatchx; ++i){
       scol = i*stpsz.width;
       srow = j*stpsz.height;
@@ -82,7 +69,7 @@ void DataProc::im2patchMat(Mat const& input, Size psz, Size stpsz,MatrixXd &patc
 	    patch2dMat(l+m*psz.width,cols) = (double)v[2]/255.0;
 	    patch2dMat(l+m*psz.width + npx, cols) = (double)v[1]/255.0;
 	    patch2dMat(l+m*psz.width + 2*npx, cols) = (double)v[0]/255.0;
->>>>>>> newbranch
+
 	  }
       ++cols;
     }
