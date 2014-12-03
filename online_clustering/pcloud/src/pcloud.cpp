@@ -42,6 +42,17 @@ using namespace std;
 void PCloud::load_pcloud(const char *dir, int nfiles)
 {
   this->cloud = new _pclType1[nfiles];
+
+  if(nfiles == 1){
+    if (pcl::io::loadPCDFile<pcl::PointXYZI> (dir, cloud[0]) == -1){
+      cout << "\nCan't load file: ";
+      throw runtime_error(dir);
+    }
+    else{
+      cout << "Successfully load pcl data file: " << dir << endl;
+    }
+    return;
+  }
   
   for(int i = 0; i < nfiles; ++i ){
     string infile(dir);
@@ -53,11 +64,11 @@ void PCloud::load_pcloud(const char *dir, int nfiles)
       cout << "\nCan't load file: ";
       throw runtime_error(infile.c_str());
     }
-    else
-      {
-	cout << "Successfully load pcl data file: " << infile << endl;
-      }
+    else{
+      cout << "Successfully load pcl data file: " << infile << endl;
+    }
   }
+
 }
 
 void PCloud::proc_pcloud(_pclType1::Ptr& pcloud, uint ith)
@@ -196,13 +207,13 @@ void PCloud::vis_pointcloud2rangeimage(_pclType1::Ptr &pcloud, std::vector<pcl::
 	  vtkSmartPointer<vtkImageData>::New();
 	int imageExtent[6] = { 0, width-1, 0, height-1, 0, 0 };
 	image->SetExtent(imageExtent);
+
 #if VTK_MAJOR_VERSION <= 5
 	image->SetNumberOfScalarComponents(1);
 	image->SetScalarTypeToDouble();
 #else
 	image->AllocateScalars(VTK_DOUBLE, 1);
-#endif
- 
+#endif 
 	//double scalarvalue = 0.0;
 	float *pixel_value = range_image[i].getRangesArray();
 	float max = 0, min = 6000;

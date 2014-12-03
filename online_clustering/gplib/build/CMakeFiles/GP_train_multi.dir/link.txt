@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/GP_train_multi.dir/test/gp_train_multi.cc.o  -o GP_train_multi -rdynamic libgplib.a /usr/local/lib/libgsl.so /usr/local/lib/libgslcblas.so -Wl,-rpath,/usr/local/lib 

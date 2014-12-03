@@ -38,9 +38,10 @@ find_package(OpenCV REQUIRED)
 endif()
 
 OPTION(USE_EIGEN "Using Eigen3 Library." ON)
-if(USE_EIGEN)
+#if(USE_EIGEN)
 find_package(Eigen3 REQUIRED)
-endif()
+include_directories(${EIGEN3_INCLUDE_DIR})
+#endif()
 
 
 # We want to create dynamic libraries
@@ -79,9 +80,10 @@ set(ONLINECLUST_LIBRARIES
 add_subdirectory(pcloud)
 add_subdirectory(data_proc)
 add_subdirectory(hmp)
+add_subdirectory(test)
+add_subdirectory(clustering)
 
 #add_subdirectory(config)
-add_subdirectory(test)
 #add_subdirectory(app)
 
 # Empty the export targets list
@@ -149,3 +151,10 @@ install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/hmp_test" COMPONENT RUNTIME DESTINATIO
 install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/omp_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/hmp/")
 
 install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/pcloud_vis_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/pcloud/")
+
+install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/pcloud_2rgbd_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/pcloud/")
+
+#install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/clust_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/clustering/")
+
+install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/sys" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/sys/")
+

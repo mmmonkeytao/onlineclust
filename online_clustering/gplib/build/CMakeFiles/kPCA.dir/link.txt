@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/kPCA.dir/test/kPCA.cc.o  -o kPCA -rdynamic libgplib.a /usr/local/lib/libgsl.so /usr/local/lib/libgslcblas.so -Wl,-rpath,/usr/local/lib 

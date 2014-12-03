@@ -97,6 +97,7 @@ class OMP{
   // Output: x
   inline void LL_solver(MatrixXd const& LL, VectorXd const& b, const char* type, VectorXd &x); 
 
+
 };
 
 }

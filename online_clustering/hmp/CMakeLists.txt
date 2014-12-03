@@ -9,7 +9,7 @@ set(PUBLIC_HEADERS include/hmp.h include/omp.h)
 set(ONLINECLUST_HMP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(ONLINECLUST_HMP_LIBRARY online_clust_hmp)
 
-include_directories(EIGEN3_INCLUDE_DIR)
+#include_directories(EIGEN3_INCLUDE_DIR)
 include_directories(${ONLINECLUST_HMP_INCLUDE})
 
 cache_internal_init_unique(ONLINECLUST_HMP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/include)

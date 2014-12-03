@@ -96,6 +96,7 @@ int main(){
       
       MatrixXd Gamma;
       //omp.remove_dc(patch, "column");
+      patch -= MatrixXd::Ones(patch.rows(), patch.cols()) * 0.5;
       omp.Batch_OMP(patch, D, 40, Gamma); 
 
       // reconstruct to original image
