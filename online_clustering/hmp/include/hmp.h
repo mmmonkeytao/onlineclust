@@ -10,11 +10,14 @@ using namespace Eigen;
 namespace onlineclust{
 
   using uchar = unsigned char;
-
+  // first: width, second: height
+  using matSize = pair<uint, uint>;
+  //using Mat3D = Matrix<VectorXd, Dynamic, Dynamic >;
+  
   class HMP{
 
   public:  
-    void hmp_core(MatrixXd &x);
+    void hmp_core(MatrixXd &x, const char *type, uint SPlevel[2], MatrixXd &fea);
     /// 
     ///
     /// @param D 
@@ -22,11 +25,11 @@ namespace onlineclust{
     /// @param splevel 
     /// @param SPcodes 
     ///
-    void MaxPool_layer1_BOMP(MatrixXd const&D, MatrixXd const&X, uint splevel, MatrixXd &SPcodes);
+    void MaxPool_layer1_mode1(MatrixXd &Gamma, matSize const&patchsz, matSize const&realsz);
 
-    void MaxPool_layer2_BOMP();
+    void MaxPool_layer2(MatrixXd &fea, matSize const&feaSz, uint pool[3]);
     
-    void mat2patch(MatrixXd const& im, const char*type, MatrixXd &patchMat);
+    void mat2patch(MatrixXd const& im, const char*type, matSize const& rsz, MatrixXd &patchMat);
 
 
     struct patchsz{
@@ -42,8 +45,7 @@ namespace onlineclust{
     }stepsz;
 
   private:
-
-    uint sparse_level;
+    const double eps = 0.1;
         
   };
 

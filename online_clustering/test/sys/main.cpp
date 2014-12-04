@@ -6,11 +6,12 @@ using namespace onlineclust;
 
 int main(){
   
-  HMP test;
+  HMP hmpObj;
 
-  MatrixXd c;
-  test.hmp_core(c);
-
-
+  MatrixXd x{50,51}, fea;
+  x.setRandom();
+  uint splevel[2] = {5, 10};
+  hmpObj.hmp_core(x,"rgb",splevel, fea);
+  
   return 0;
 }

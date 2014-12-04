@@ -20,9 +20,10 @@ add_executable(pcloud_2rgbd_test pcloud/pcloud_2rgbd_test.cpp)
 target_link_libraries(pcloud_2rgbd_test ${ONLINECLUST_PCLOUD_LIBRARY})
 
 ### test clustering ########
-#include_directories(${ONLINECLUST_CLUST_INCLUDE})
-#add_executable(clust_test clustering/clust_test.cpp)
-#target_link_libraries(clust_test ${ONLINECLUST_CLUST_LIBRARY})
+#message("${ONLINECLUST_CLUST_INCLUDE}")
+include_directories("${ONLINECLUST_CLUST_INCLUDE}")
+add_executable(clust_test clustering/clust_test.cpp)
+target_link_libraries(clust_test ${ONLINECLUST_CLUST_LIBRARY})
 
 #add_executable(cluster_tracks clustering/cluster_tracks.cpp)
 #target_link_libraries(cluster_tracks ${ONLINECLUST_CLUST_LIBRARY})

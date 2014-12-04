@@ -97,12 +97,13 @@ int main(){
       MatrixXd Gamma;
       //omp.remove_dc(patch, "column");
       patch -= MatrixXd::Ones(patch.rows(), patch.cols()) * 0.5;
-      omp.Batch_OMP(patch, D, 40, Gamma); 
+      omp.Batch_OMP(patch, D, 5, Gamma); 
 
       // reconstruct to original image
       MatrixXd m = D * Gamma;
       Mat mat; 
       
+      m += MatrixXd::Ones(patch.rows(), patch.cols()) * 0.5;      
       test.reconstructIm(m, Image.size(), psz, stepsz, mat);
       imwrite("cell_phone_1_1_6_crop_reconstruct.png", mat);
     }
