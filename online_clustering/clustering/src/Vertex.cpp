@@ -24,7 +24,7 @@ Vertex:: ~Vertex()
 
 /////////////////////////// PUBLIC FUNCTIONS ////////////////////////////////////
 
-// Accessors and mutators
+// Accessors and mutatorsb
 
 // ID
 unsigned Vertex::getID() const

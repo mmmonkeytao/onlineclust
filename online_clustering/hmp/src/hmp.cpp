@@ -26,19 +26,19 @@ void HMP::hmp_core(MatrixXd& X, const char* type, uint SPlevel[2], MatrixXd& fea
   //matSize imSize =  matSize(X.rows(), X.cols()/3);
   matSize gamma_sz =  matSize(ceil((float)(X.cols()/nchannel - (uint)(patchsz.width/2) * 2)/(float)stepsz.width1),ceil((float)(X.rows() - (uint)(patchsz.height/2) * 2)/(float)stepsz.height1));
 
-  char str[] = "column";
-  omp.remove_dc(X, str);
   MatrixXd patchMat;
   mat2patch(X, type, gamma_sz, patchMat);
 
+  char str[] = "column";
+  omp.remove_dc(patchMat, str);
   // 1st layer coding
-  MatrixXd Gamma;
+  MatrixXd Gamma; 
   
   if(nchannel == 3)
     omp.Batch_OMP(patchMat, D1rgb, SPlevel[0], Gamma);
   else 
     omp.Batch_OMP(patchMat, D1depth, SPlevel[0], Gamma);
-
+ 
   matSize psz1 = matSize(4,4);
   MaxPool_layer1_mode1(Gamma, psz1, gamma_sz);
   // 2nd layer learning
@@ -46,12 +46,11 @@ void HMP::hmp_core(MatrixXd& X, const char* type, uint SPlevel[2], MatrixXd& fea
     omp.Batch_OMP(Gamma, D2rgb, SPlevel[1], fea);
   else
     omp.Batch_OMP(Gamma, D2depth, SPlevel[1], fea);
-
+ 
   matSize feaSize = matSize{gamma_sz.first/psz1.first, 
 			    gamma_sz.second/psz1.second};
   uint pool[3] = {3,2,1};
   MaxPool_layer2(fea, feaSize, pool);
-
 }
 
 void HMP::MaxPool_layer2(MatrixXd &fea, matSize const&feaSize, uint pool[3])
@@ -60,7 +59,7 @@ void HMP::MaxPool_layer2(MatrixXd &fea, matSize const&feaSize, uint pool[3])
   //uint cols = fea.cols();
   MatrixXd temp = std::move(fea);
   uint nr = pow(pool[0],2) + pow(pool[1],2) + pow(pool[2],2);
-  fea = VectorXd{static_cast<int>(nr*rows)};
+  fea = VectorXd::Zero(static_cast<int>(nr*rows),1);
   
   // pool 1
   MatrixXd maxfea{rows, 16};
@@ -105,7 +104,7 @@ void HMP::MaxPool_layer2(MatrixXd &fea, matSize const&feaSize, uint pool[3])
     for(uint i = 1; i < pool[1]; ++i){
       fea.block(offset2*1000, 0, 1000, 1) = fea.block(offset2*1000, 0, 1000, 1).cwiseMax(fea.block((offset+i+j*pool[1])*1000, 0, 1000,1));
     }
-
+  
   // normalize feature
   fea /= (fea.norm() + eps);
 

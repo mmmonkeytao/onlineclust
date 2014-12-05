@@ -23,7 +23,7 @@ using namespace std::chrono;
 int main(){
   
   HMP hmpObj;
-  OnlineStarClustering osc(0.7,14000);
+  OnlineStarClustering osc(0.5,14000);
   
   MatrixXd x{44,21};
   x.setRandom();
@@ -36,7 +36,7 @@ int main(){
 
   // load data from pcl
     // Initialization
-  const uint nfiles = 2;
+  const uint nfiles = 10;
   // 
   PCloud Cloud;
   Cloud.load_pcloud("../data/", nfiles);
@@ -93,9 +93,10 @@ int main(){
 		 << "HMP computation time(ms): " << duration_cast<milliseconds>(t2-t1).count() << endl;
 
 	    cout << "Inserting into clustering:\n";
-            SparseVectorXd sparse = fea.sparseView();
-	    osc.insert(sparse);
-            cout << "Clustering insertion completes.\n";
+            //SparseVectorXd sparse = fea.sparseView();
+            VectorXd sparse = fea.col(0);
+            osc.insert(sparse);
+            cout << "Clustering insertion completes.\n" << endl;
 	  }
 
  	}
@@ -121,6 +122,8 @@ int main(){
       //boost::this_thread::sleep (boost::posix_time::microseconds (1000000));
 
     }
-  
+
+  osc.exportDot("overall.dot", false);
+  cout << ".dot output completes." << endl; 
   return 0;
 }

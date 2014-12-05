@@ -48,7 +48,7 @@ namespace onlineclust {
     void V_measure(double beta);
     uint getDataSize();
     /* add for sparse case */
-    void insert(SparseVectorXd &sv);
+    void insert(VectorXd &sv);
     void insertSparseData();
     //////////////////////////////////////////////////////////
   protected:

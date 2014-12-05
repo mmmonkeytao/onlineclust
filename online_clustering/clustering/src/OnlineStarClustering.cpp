@@ -19,21 +19,21 @@ OnlineStarClustering::~OnlineStarClustering()
 
 }
 
-void OnlineStarClustering::insert(SparseVectorXd &vec)
+void OnlineStarClustering::insert(VectorXd &vec)
 {
   if(static_cast<uint>(vec.size()) != _feaSize)
     throw runtime_error("\nFeature inserted has wrong dimention.\n");
   
   // insert into sparse dataset
-  _spData.push_back(std::move(vec));
-  
+  _data.push_back(std::move(vec));
+ 
   // insert and update clusters
   insertSparseData();
 }
 
 void OnlineStarClustering::insertSparseData()
 {
-  if(_spData.size() == 0) // no data to insert
+  if(_data.size() == 0) // no data to insert
     throw runtime_error("\nDataset is empty, nothing to insert.\n");
 
   list<uint> L;
@@ -41,7 +41,8 @@ void OnlineStarClustering::insertSparseData()
     
   for(auto &it: _elemInGraphSigma){
     //uint old_point_idx = _id2idx[old_vertex_id];
-    double similarityValue = computeSimilarity(_spData[it], _spData[new_point_id]);
+
+    double similarityValue = _data[it].dot( _data[new_point_id]);
 
     if (similarityValue >= _sigma)        
       L.push_back(it);
@@ -57,7 +58,9 @@ void OnlineStarClustering::insertSparseData()
 double OnlineStarClustering::computeSimilarity(SparseVectorXd const &x1,SparseVectorXd const &x2)const 
 {
   // cosine similarrty
-  return (x1-x2).norm();
+  
+  //SparseVectorXd x{} = x1 - x2;
+  return 0.8;//(x1-x2).norm();
 } 
 
 void OnlineStarClustering::loadAndAddData(char const *filename)
