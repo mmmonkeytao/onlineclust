@@ -25,7 +25,7 @@ int main(int argc, char **argv){
   // create viewer
   pcl::visualization::PCLVisualizer viewer("KITTI Viewer");
   viewer.setBackgroundColor (0, 0, 0);
-  cout << "OK\n";
+
   //
   Cloud.initCamParam();
   viewer.setCameraParameters(Cloud.getCamera());

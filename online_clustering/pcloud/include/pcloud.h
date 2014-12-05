@@ -5,6 +5,7 @@
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/visualization/pcl_visualizer.h>
+#include <pcl/range_image/range_image.h>
 
 namespace onlineclust{
   
@@ -62,6 +63,14 @@ namespace onlineclust{
     /// @param cloud_normals 
     ///
     void cloud_normal(_pclType1::Ptr &pcloud, pcl::PointCloud<pcl::Normal>::Ptr &cloud_normals);
+    /// 
+    ///
+    /// @param pcloud 
+    /// @param cluster_indices 
+    /// @param range_image 
+    /// @param rangeImage_num 
+    ///
+    void getRangeImage(_pclType1::Ptr &pcloud, std::vector<pcl::PointIndices> &cluster_indices, pcl::RangeImage *&range_image, uint &rangeImage_num);
 
     _pclType1& getCloud(uint ith) const{ return cloud[ith]; };
     /// 

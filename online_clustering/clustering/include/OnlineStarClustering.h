@@ -18,9 +18,12 @@
 #include "Cluster.h"
 #include "ClusterList.h"
 
+using namespace Eigen;
 
 namespace onlineclust {
 
+  typedef SparseVector<double, ColMajor, int> SparseVectorXd;
+  typedef std::vector<SparseVectorXd> SparseDataSet;
   
   class OnlineStarClustering  
   {
@@ -29,27 +32,31 @@ namespace onlineclust {
     typedef std::vector<Eigen::VectorXd> DataSet;
     
     OnlineStarClustering(double sigma = 0.7);
-
+    OnlineStarClustering(double sigma, uint feaSize);
     
     // Destructor
-    virtual ~OnlineStarClustering();
-
-    void loadAndAddData(char const *filename);
+    virtual ~OnlineStarClustering();    
     void addPoint(Eigen::VectorXd const &p, uint idx);
     void clear();
 
     void exportDot(char const *filename, bool use_data) const;
 
     // new codes
-    //////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    void loadAndAddData(char const *filename);
     void deleteData(std::list<uint> deleteList);
     void V_measure(double beta);
     uint getDataSize();
-
+    /* add for sparse case */
+    void insert(SparseVectorXd &sv);
+    void insertSparseData();
+    //////////////////////////////////////////////////////////
   protected:
 
     virtual double computeSimilarity(Eigen::VectorXd const &x1,
-				     Eigen::VectorXd const &x2) const;
+		                     Eigen::VectorXd const &x2) const;
+    virtual double computeSimilarity(SparseVectorXd const &x1, 
+				     SparseVectorXd const &x2 )const; 
 
   private:
 
@@ -66,6 +73,9 @@ namespace onlineclust {
     unsigned _numClusters;
     ///////////////////////////////////////////////
     std::map<uint, double> _labels;
+    /* add for sparse case */
+    SparseDataSet _spData;
+    uint _feaSize;  // store the feature size
     ///////////////////////////////////////////////
 
     std::priority_queue<Vertex> _priorityQ;
@@ -81,6 +91,11 @@ namespace onlineclust {
 
     void fastDelete(uint alphaID);
     void sortList(std::list <uint>& AdjCV);
+
+    /*
+     *  new added codes for Eigen::SparseVector data insertion, need to be integrated  
+     */
+    
 
   };
   

@@ -6,31 +6,47 @@
 
 using namespace onlineclust;
 
+void HMP::loadDct(const char* flayer1, const char*flayer2, const char* type)
+{
+  OMP omp;
+  if(!strcmp(type, "rgb")){
+    omp.loadDct(flayer1, 75, 150, this->D1rgb);
+    omp.loadDct(flayer2, 2400, 1000, this->D2rgb);
+  } else {
+    omp.loadDct(flayer1, 25, 75, this->D1depth);
+    omp.loadDct(flayer2, 1200, 1000, this->D2depth);
+  }
+}
+
 void HMP::hmp_core(MatrixXd& X, const char* type, uint SPlevel[2], MatrixXd& fea)
 {
+  OMP omp;
   uint nchannel = (!strcmp(type,"rgb"))? 3 : 1;
  
   //matSize imSize =  matSize(X.rows(), X.cols()/3);
   matSize gamma_sz =  matSize(ceil((float)(X.cols()/nchannel - (uint)(patchsz.width/2) * 2)/(float)stepsz.width1),ceil((float)(X.rows() - (uint)(patchsz.height/2) * 2)/(float)stepsz.height1));
 
-  MatrixXd D1rgb{75, 150};
-  MatrixXd D2rgb{2400, 1000};
-  
-  OMP omp;
-  omp.loadDct("rgbdevel_fulldic_1st_layer_5x5_crop.dat", 75, 150, D1rgb);
-  omp.loadDct("rgbdeval_dic_2nd_layer_5x5_depthcrop.dat", 2400, 1000, D2rgb);
-
+  char str[] = "column";
+  omp.remove_dc(X, str);
   MatrixXd patchMat;
   mat2patch(X, type, gamma_sz, patchMat);
+
   // 1st layer coding
   MatrixXd Gamma;
-  omp.Batch_OMP(patchMat, D1rgb, SPlevel[0], Gamma);
   
+  if(nchannel == 3)
+    omp.Batch_OMP(patchMat, D1rgb, SPlevel[0], Gamma);
+  else 
+    omp.Batch_OMP(patchMat, D1depth, SPlevel[0], Gamma);
+
   matSize psz1 = matSize(4,4);
   MaxPool_layer1_mode1(Gamma, psz1, gamma_sz);
   // 2nd layer learning
-  omp.Batch_OMP(Gamma, D2rgb, SPlevel[1], fea);
-  
+  if(nchannel == 3)
+    omp.Batch_OMP(Gamma, D2rgb, SPlevel[1], fea);
+  else
+    omp.Batch_OMP(Gamma, D2depth, SPlevel[1], fea);
+
   matSize feaSize = matSize{gamma_sz.first/psz1.first, 
 			    gamma_sz.second/psz1.second};
   uint pool[3] = {3,2,1};

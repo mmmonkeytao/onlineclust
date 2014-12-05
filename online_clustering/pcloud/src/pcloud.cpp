@@ -103,6 +103,45 @@ void PCloud::cloud_normal(_pclType1::Ptr &cloud, pcl::PointCloud<pcl::Normal>::P
     ne1.compute (*cloud_normals);
 }
 
+void PCloud::getRangeImage(_pclType1::Ptr &pcloud, std::vector<pcl::PointIndices> &cluster_indices, pcl::RangeImage *&range_image, uint &rangeImage_num)
+{
+    pcl::ExtractIndices<pcl::PointXYZI> extract;
+    std::cout << "no. of range images: " << cluster_indices.size() << endl;
+    // --------------------------------------------
+    // -----save sub-clusters in rangeImage[]-----
+    // --------------------------------------------
+    range_image = new pcl::RangeImage[cluster_indices.size()];
+    rangeImage_num = cluster_indices.size();
+
+    uint i = 0;
+    for (auto it = cluster_indices.begin (); it != cluster_indices.end (); ++it)
+    {
+        // extract sub-clusters
+        _pclType1::Ptr sub_cluster(new _pclType1);
+
+        extract.setInputCloud (pcloud);
+        extract.setIndices( boost::shared_ptr<pcl::PointIndices>( new pcl::PointIndices( *it ) ) );
+        extract.setNegative (false);
+        extract.filter (*sub_cluster);
+
+        // We now want to create a range image from the above point cloud, with a 1deg angular resolution
+        float angularResolution = (float) (  0.1f * (M_PI/180.0f));  //   1.0 degree in radians
+        float maxAngleWidth     = (float) (360.0f * (M_PI/180.0f));  // 360.0 degree in radians
+        float maxAngleHeight    = (float) (180.0f * (M_PI/180.0f));  // 180.0 degree in radians
+        Eigen::Affine3f sensorPose = (Eigen::Affine3f)Eigen::Translation3f(0.0f, 0.0f, 0.0f);
+        pcl::RangeImage::CoordinateFrame coordinate_frame = pcl::RangeImage::LASER_FRAME;
+        float noiseLevel = 0.00;
+        float minRange = 0.0f;
+        int borderSize = 1;
+
+        range_image[i].createFromPointCloud(*sub_cluster.get(), angularResolution, maxAngleWidth, maxAngleHeight,sensorPose, coordinate_frame, noiseLevel, minRange, borderSize);
+
+        //range_image[i].createFromPointCloudWithViewpoints(*sub_cluster.get(), angularResolution, maxAngleWidth, maxAngleHeight,
+        //                                                  coordinate_frame, noiseLevel, minRange, borderSize);
+
+        i++;
+    }
+}
 
 void PCloud::vis_pointcloud2rangeimage(_pclType1::Ptr &pcloud, std::vector<pcl::PointIndices> &cluster_indices)
 {

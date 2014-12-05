@@ -43,6 +43,12 @@ find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 #endif()
 
+# use gsl lib
+#list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/gplib/cmake")
+find_package(GSL REQUIRED)
+include_directories(${GSL_INCLUDE_DIR})
+#link_directories(${GSL_LIBRARY_DIRS})
+
 
 # We want to create dynamic libraries
 set(BUILD_SHARED_LIBS true)
@@ -154,7 +160,7 @@ install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/pcloud_vis_test" COMPONENT RUNTIME DES
 
 install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/pcloud_2rgbd_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/pcloud/")
 
-#install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/clust_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/clustering/")
+install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/clust_test" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/clustering/")
 
 install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/sys" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/test/exe/sys/")
 

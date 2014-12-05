@@ -1,14 +1,64 @@
 #include "OnlineStarClustering.h"
+#include <stdexcept>
+
 
 using namespace std;
 using namespace onlineclust;
 
-OnlineStarClustering::OnlineStarClustering(double sigma) : 
-  _data(), _similarityMatrix(0,0), _sigma(sigma)
+OnlineStarClustering::OnlineStarClustering(double sigma): 
+  _data(), _similarityMatrix(0,0), _sigma(sigma), _spData(),_feaSize()
+{}
+
+OnlineStarClustering::OnlineStarClustering(double sigma, uint feaSize): 
+  _data(), _similarityMatrix(0,0), _sigma(sigma), _spData(),_feaSize(feaSize)
 {}
 
 OnlineStarClustering::~OnlineStarClustering()
-{}
+{
+  // clear allocated data
+
+}
+
+void OnlineStarClustering::insert(SparseVectorXd &vec)
+{
+  if(static_cast<uint>(vec.size()) != _feaSize)
+    throw runtime_error("\nFeature inserted has wrong dimention.\n");
+  
+  // insert into sparse dataset
+  _spData.push_back(std::move(vec));
+  
+  // insert and update clusters
+  insertSparseData();
+}
+
+void OnlineStarClustering::insertSparseData()
+{
+  if(_spData.size() == 0) // no data to insert
+    throw runtime_error("\nDataset is empty, nothing to insert.\n");
+
+  list<uint> L;
+  uint new_point_id = _data.size() - 1;
+    
+  for(auto &it: _elemInGraphSigma){
+    //uint old_point_idx = _id2idx[old_vertex_id];
+    double similarityValue = computeSimilarity(_spData[it], _spData[new_point_id]);
+
+    if (similarityValue >= _sigma)        
+      L.push_back(it);
+  }
+
+  fastInsert(new_point_id, L);
+  _elemInGraphSigma.push_back(new_point_id);
+  //_id2idx[new_vertex_id] = new_point_idx;
+  L.clear();
+
+}
+
+double OnlineStarClustering::computeSimilarity(SparseVectorXd const &x1,SparseVectorXd const &x2)const 
+{
+  // cosine similarrty
+  return (x1-x2).norm();
+} 
 
 void OnlineStarClustering::loadAndAddData(char const *filename)
 {
@@ -271,15 +321,15 @@ void OnlineStarClustering::fastInsert(uint alphaID, list <uint> &L)
   alpha.setDomCenterNull();
   alpha.setInQStatus(false);
     
-  _graph[alphaID] = alpha;
+  _graph.insert(pair<uint, Vertex>(alphaID ,alpha));
     
   uint betaID, betaDomCenterID, alphaDomCenterID;
     
   // For all beta in list L.
-  for (list<uint>::iterator it = L.begin(); it != L.end(); ++it){
+  for (auto &it: L){
     
-    betaID = *it;
-    
+    betaID = it;
+
     // Increment degrees
     _graph[alphaID].incrementDegree();
     _graph[betaID].incrementDegree();
@@ -352,15 +402,15 @@ void OnlineStarClustering::fastInsert(uint alphaID, list <uint> &L)
       _priorityQ.push(_graph[alphaID]);
     }   
   }
-    
+          
   // Update using priority queue.
   fastUpdate(alphaID);
 }
 
 void OnlineStarClustering::fastUpdate(uint alphaID)
 {
-    uint phiID, betaID, deltaID, muID, lambdaID, vID, domCenterIDForPhi;
-    list <uint>::const_iterator iter, iter1, iter2, iter3, innerIter;
+    uint phiID, deltaID, muID, lambdaID, vID, domCenterIDForPhi;
+    //list <uint>::const_iterator iter, iter1, iter2, iter3, innerIter;
     Vertex topPriorityQ;
     
     while(!_priorityQ.empty()){
@@ -382,12 +432,9 @@ void OnlineStarClustering::fastUpdate(uint alphaID)
 	//_perIterSatellitePromotions[alphaID]++;
 	//_perIterNumClusters[alphaID]++;
         
-	for (iter = (_graph[phiID].getAdjVerticesList()).begin(); 
-	     iter != (_graph[phiID].getAdjVerticesList()).end(); ++iter){
-	  
-	  betaID = *iter;
-	  _graph[betaID].insertAdjCenter(phiID);
-	} 
+	for (auto &iter: _graph[phiID].getAdjVerticesList())	  
+	  _graph[iter].insertAdjCenter(phiID);
+	
       }
       else {
 	
@@ -417,20 +464,14 @@ void OnlineStarClustering::fastUpdate(uint alphaID)
 	  //_perIterSatellitePromotions[alphaID]++;
 	  //_perIterNumClusters[alphaID]++;
           
-	  for (iter2 = (_graph[phiID].getAdjVerticesList()).begin(); 
-	       iter2 != (_graph[phiID].getAdjVerticesList()).end(); ++iter2) {
-	    
-	    betaID = *iter2;
-	    _graph[betaID].insertAdjCenter(phiID);
+	  for (auto &iter2:_graph[phiID].getAdjVerticesList()){
+	    _graph[iter2].insertAdjCenter(phiID);
 	  }
           
 	  // Get a copy, otherwise inner loop can modify the list. 
-	  list<uint> phiAdjCenterList = _graph[phiID].getCopyOfAdjCentersList();
-          
-	  for (iter3 = phiAdjCenterList.begin(); 
-	       iter3 != phiAdjCenterList.end(); ++iter3) {                 
+	  for (auto &iter3: _graph[phiID].getCopyOfAdjCentersList()){               
 	    
-	    deltaID = *iter3;
+	    deltaID = iter3;
 	    _graph[deltaID].setType(Vertex::SATELLITE);   // Broken star.
 	    _graph[deltaID].setDomCenter(phiID);    
 	    _graph[phiID].insertDomCenter(deltaID); // Add deltaID to phiID's dom center list.
@@ -438,19 +479,14 @@ void OnlineStarClustering::fastUpdate(uint alphaID)
 	    //_perIterStarsBroken[alphaID]++;         // Record broken star.
 	    //_perIterNumClusters[alphaID]--;         // Record dec in num of clusters.
 		
-	    for (innerIter = (_graph[deltaID].getAdjVerticesList()).begin(); 
-		 innerIter != (_graph[deltaID].getAdjVerticesList()).end(); 
-		 ++innerIter){
-	      
-	      muID = *innerIter;
+	    for (auto &innerIter: _graph[deltaID].getAdjVerticesList()){
+	      muID = innerIter;
 	      _graph[muID].deleteAdjCenter(deltaID);
 	    }                        
 	    
-	    for (innerIter = (_graph[deltaID].getDomSatsList()).begin(); 
-		 innerIter != (_graph[deltaID].getDomSatsList()).end(); 
-		 ++innerIter){
+	    for (auto &innerIter: _graph[deltaID].getDomSatsList()){
 	      
-	      vID = *innerIter;
+	      vID = innerIter;
 	      _graph[vID].setDomCenterNull();
               
 	      if (_graph[vID].getInQStatus() == false){

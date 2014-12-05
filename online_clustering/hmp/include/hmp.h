@@ -31,6 +31,8 @@ namespace onlineclust{
     
     void mat2patch(MatrixXd const& im, const char*type, matSize const& rsz, MatrixXd &patchMat);
 
+    void loadDct(const char* flayer1, const char*flayer2, const char* type);
+    
 
     struct patchsz{
       const uint width = 5;
@@ -46,7 +48,11 @@ namespace onlineclust{
 
   private:
     const double eps = 0.1;
-        
+    MatrixXd D1rgb;
+    MatrixXd D2rgb;
+    MatrixXd D1depth;
+    MatrixXd D2depth;
+    
   };
 
 }

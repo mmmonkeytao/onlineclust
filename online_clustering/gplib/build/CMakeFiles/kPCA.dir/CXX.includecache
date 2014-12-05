@@ -6,43 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/kPCA.cc
-vector
--
-iostream
--
-fstream
--
-GPlib/GP_Constants.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_Constants.hh
-GPlib/GP_CovarianceFunction.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_CovarianceFunction.hh
-GPlib/GP_DataSet.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_DataSet.hh
-GPlib/GP_InputParams.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_InputParams.hh
-GPlib/GP_Evaluation.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_Evaluation.hh
-GPlib/GP_UniversalDataReader.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_UniversalDataReader.hh
-GPlib/KernelPCA.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/KernelPCA.hh
-
-/usr/local/include/GPlib/GP_Base.hh
+../include/GPlib/GP_Base.hh
 vector
 -
 list
 -
 GPlib/GP_Matrix.hh
-/usr/local/include/GPlib/GPlib/GP_Matrix.hh
+../include/GPlib/GPlib/GP_Matrix.hh
 GPlib/GP_DataSet.hh
-/usr/local/include/GPlib/GPlib/GP_DataSet.hh
+../include/GPlib/GPlib/GP_DataSet.hh
 GPlib/GP_CovarianceFunction.hh
-/usr/local/include/GPlib/GPlib/GP_CovarianceFunction.hh
+../include/GPlib/GPlib/GP_CovarianceFunction.hh
 
-/usr/local/include/GPlib/GP_Constants.hh
+../include/GPlib/GP_Constants.hh
 
-/usr/local/include/GPlib/GP_CovarianceFunction.hh
+../include/GPlib/GP_CovarianceFunction.hh
 vector
 -
 fstream
@@ -50,15 +28,15 @@ fstream
 cmath
 -
 GPlib/GP_Constants.hh
-/usr/local/include/GPlib/GPlib/GP_Constants.hh
+../include/GPlib/GPlib/GP_Constants.hh
 GPlib/GP_Exception.hh
-/usr/local/include/GPlib/GPlib/GP_Exception.hh
+../include/GPlib/GPlib/GP_Exception.hh
 GPlib/GP_Vector.hh
-/usr/local/include/GPlib/GPlib/GP_Vector.hh
+../include/GPlib/GPlib/GP_Vector.hh
 GPlib/GP_SigmoidFunction.hh
-/usr/local/include/GPlib/GPlib/GP_SigmoidFunction.hh
+../include/GPlib/GPlib/GP_SigmoidFunction.hh
 
-/usr/local/include/GPlib/GP_DataReader.hh
+../include/GPlib/GP_DataReader.hh
 limits
 -
 iomanip
@@ -68,11 +46,11 @@ dirent.h
 regex.h
 -
 GPlib/GP_InputParams.hh
-/usr/local/include/GPlib/GPlib/GP_InputParams.hh
+../include/GPlib/GPlib/GP_InputParams.hh
 GPlib/GP_DataSet.hh
-/usr/local/include/GPlib/GPlib/GP_DataSet.hh
+../include/GPlib/GPlib/GP_DataSet.hh
 
-/usr/local/include/GPlib/GP_DataSet.hh
+../include/GPlib/GP_DataSet.hh
 vector
 -
 list
@@ -94,21 +72,21 @@ math.h
 gsl/gsl_rng.h
 -
 GPlib/GP_Constants.hh
-/usr/local/include/GPlib/GPlib/GP_Constants.hh
+../include/GPlib/GPlib/GP_Constants.hh
 GPlib/GP_Exception.hh
-/usr/local/include/GPlib/GPlib/GP_Exception.hh
+../include/GPlib/GPlib/GP_Exception.hh
 GPlib/GP_Vector.hh
-/usr/local/include/GPlib/GPlib/GP_Vector.hh
+../include/GPlib/GPlib/GP_Vector.hh
 
-/usr/local/include/GPlib/GP_Evaluation.hh
+../include/GPlib/GP_Evaluation.hh
 vector
 -
 string
 -
 GPlib/GP_DataSet.hh
-/usr/local/include/GPlib/GPlib/GP_DataSet.hh
+../include/GPlib/GPlib/GP_DataSet.hh
 
-/usr/local/include/GPlib/GP_Exception.hh
+../include/GPlib/GP_Exception.hh
 exception
 -
 string
@@ -118,41 +96,41 @@ sstream
 sys/types.h
 -
 
-/usr/local/include/GPlib/GP_InputParams.hh
+../include/GPlib/GP_InputParams.hh
 string
 -
 inttypes.h
 -
 GPlib/GP_DataSet.hh
-/usr/local/include/GPlib/GPlib/GP_DataSet.hh
+../include/GPlib/GPlib/GP_DataSet.hh
 GPlib/GP_Optimizer.hh
-/usr/local/include/GPlib/GPlib/GP_Optimizer.hh
+../include/GPlib/GPlib/GP_Optimizer.hh
 
-/usr/local/include/GPlib/GP_Matrix.hh
+../include/GPlib/GP_Matrix.hh
 iostream
 -
 gsl/gsl_linalg.h
 -
 GPlib/GP_Vector.hh
-/usr/local/include/GPlib/GPlib/GP_Vector.hh
+../include/GPlib/GPlib/GP_Vector.hh
 
-/usr/local/include/GPlib/GP_ObjectiveFunction.hh
+../include/GPlib/GP_ObjectiveFunction.hh
 GPlib/GP_Vector.hh
-/usr/local/include/GPlib/GPlib/GP_Vector.hh
+../include/GPlib/GPlib/GP_Vector.hh
 GPlib/GP_ObjectiveFunction.hh
-/usr/local/include/GPlib/GPlib/GP_ObjectiveFunction.hh
+../include/GPlib/GPlib/GP_ObjectiveFunction.hh
 GPlib/GP_CovarianceFunction.hh
-/usr/local/include/GPlib/GPlib/GP_CovarianceFunction.hh
+../include/GPlib/GPlib/GP_CovarianceFunction.hh
 
-/usr/local/include/GPlib/GP_Optimizer.hh
+../include/GPlib/GP_Optimizer.hh
 gsl/gsl_multimin.h
 -
 GPlib/GP_ObjectiveFunction.hh
-/usr/local/include/GPlib/GPlib/GP_ObjectiveFunction.hh
+../include/GPlib/GPlib/GP_ObjectiveFunction.hh
 
-/usr/local/include/GPlib/GP_SigmoidFunction.hh
+../include/GPlib/GP_SigmoidFunction.hh
 GPlib/GP_Constants.hh
-/usr/local/include/GPlib/GPlib/GP_Constants.hh
+../include/GPlib/GPlib/GP_Constants.hh
 gsl/gsl_math.h
 -
 gsl/gsl_randist.h
@@ -168,13 +146,13 @@ math.h
 string
 -
 
-/usr/local/include/GPlib/GP_UniversalDataReader.hh
+../include/GPlib/GP_UniversalDataReader.hh
 fstream
 -
 GPlib/GP_DataReader.hh
-/usr/local/include/GPlib/GPlib/GP_DataReader.hh
+../include/GPlib/GPlib/GP_DataReader.hh
 
-/usr/local/include/GPlib/GP_Vector.hh
+../include/GPlib/GP_Vector.hh
 vector
 -
 iostream
@@ -182,13 +160,35 @@ iostream
 sys/types.h
 -
 
-/usr/local/include/GPlib/KernelPCA.hh
+../include/GPlib/KernelPCA.hh
 GPlib/GP_Base.hh
-/usr/local/include/GPlib/GPlib/GP_Base.hh
+../include/GPlib/GPlib/GP_Base.hh
 GPlib/GP_DataSet.hh
-/usr/local/include/GPlib/GPlib/GP_DataSet.hh
+../include/GPlib/GPlib/GP_DataSet.hh
 GPlib/GP_CovarianceFunction.hh
-/usr/local/include/GPlib/GPlib/GP_CovarianceFunction.hh
+../include/GPlib/GPlib/GP_CovarianceFunction.hh
+
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/kPCA.cc
+vector
+-
+iostream
+-
+fstream
+-
+GPlib/GP_Constants.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Constants.hh
+GPlib/GP_CovarianceFunction.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_CovarianceFunction.hh
+GPlib/GP_DataSet.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_DataSet.hh
+GPlib/GP_InputParams.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_InputParams.hh
+GPlib/GP_Evaluation.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Evaluation.hh
+GPlib/GP_UniversalDataReader.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_UniversalDataReader.hh
+GPlib/KernelPCA.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/KernelPCA.hh
 
 /usr/local/include/gsl/gsl_block_char.h
 stdlib.h

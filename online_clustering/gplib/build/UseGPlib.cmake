@@ -46,7 +46,7 @@ set_property(TARGET gplib APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(gplib PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "CXX"
   IMPORTED_LINK_INTERFACE_LIBRARIES_NOCONFIG "/usr/local/lib/libgsl.so"
-  IMPORTED_LOCATION_NOCONFIG "/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/libgplib.a"
+  IMPORTED_LOCATION_NOCONFIG "/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/libgplib.a"
   )
 
 # This file does not depend on other imported targets which have

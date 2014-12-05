@@ -6,21 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gp_make_data.cc
-GPlib/GP_Matrix.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_Matrix.hh
-GPlib/GP_DataSet.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/GPlib/GP_DataSet.hh
-stdlib.h
--
-gsl/gsl_rng.h
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gsl/gsl_rng.h
-gsl/gsl_randist.h
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gsl/gsl_randist.h
+../include/GPlib/GP_Constants.hh
 
-/usr/local/include/GPlib/GP_Constants.hh
-
-/usr/local/include/GPlib/GP_DataSet.hh
+../include/GPlib/GP_DataSet.hh
 vector
 -
 list
@@ -42,13 +30,13 @@ math.h
 gsl/gsl_rng.h
 -
 GPlib/GP_Constants.hh
-/usr/local/include/GPlib/GPlib/GP_Constants.hh
+../include/GPlib/GPlib/GP_Constants.hh
 GPlib/GP_Exception.hh
-/usr/local/include/GPlib/GPlib/GP_Exception.hh
+../include/GPlib/GPlib/GP_Exception.hh
 GPlib/GP_Vector.hh
-/usr/local/include/GPlib/GPlib/GP_Vector.hh
+../include/GPlib/GPlib/GP_Vector.hh
 
-/usr/local/include/GPlib/GP_Exception.hh
+../include/GPlib/GP_Exception.hh
 exception
 -
 string
@@ -58,21 +46,33 @@ sstream
 sys/types.h
 -
 
-/usr/local/include/GPlib/GP_Matrix.hh
+../include/GPlib/GP_Matrix.hh
 iostream
 -
 gsl/gsl_linalg.h
 -
 GPlib/GP_Vector.hh
-/usr/local/include/GPlib/GPlib/GP_Vector.hh
+../include/GPlib/GPlib/GP_Vector.hh
 
-/usr/local/include/GPlib/GP_Vector.hh
+../include/GPlib/GP_Vector.hh
 vector
 -
 iostream
 -
 sys/types.h
 -
+
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gp_make_data.cc
+GPlib/GP_Matrix.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Matrix.hh
+GPlib/GP_DataSet.hh
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_DataSet.hh
+stdlib.h
+-
+gsl/gsl_rng.h
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gsl/gsl_rng.h
+gsl/gsl_randist.h
+/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gsl/gsl_randist.h
 
 /usr/local/include/gsl/gsl_block_char.h
 stdlib.h

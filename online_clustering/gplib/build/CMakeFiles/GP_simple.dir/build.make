@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib
+CMAKE_SOURCE_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build
+CMAKE_BINARY_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/GP_simple.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/GP_simple.dir/flags.make
 
 CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.o: CMakeFiles/GP_simple.dir/flags.make
 CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.o: ../test/gp_simpleclassf.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.o -c /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gp_simpleclassf.cc
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.o -c /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gp_simpleclassf.cc
 
 CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gp_simpleclassf.cc > CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gp_simpleclassf.cc > CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.i
 
 CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gp_simpleclassf.cc -o CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gp_simpleclassf.cc -o CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.s
 
 CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.o.requires:
 .PHONY : CMakeFiles/GP_simple.dir/test/gp_simpleclassf.cc.o.requires
@@ -103,6 +103,6 @@ CMakeFiles/GP_simple.dir/clean:
 .PHONY : CMakeFiles/GP_simple.dir/clean
 
 CMakeFiles/GP_simple.dir/depend:
-	cd /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/CMakeFiles/GP_simple.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles/GP_simple.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/GP_simple.dir/depend
 

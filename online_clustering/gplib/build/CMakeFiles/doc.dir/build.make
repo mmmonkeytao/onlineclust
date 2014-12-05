@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib
+CMAKE_SOURCE_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build
+CMAKE_BINARY_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build
 
 # Utility rule file for doc.
 
@@ -49,9 +49,9 @@ CMAKE_BINARY_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/cl
 include CMakeFiles/doc.dir/progress.make
 
 CMakeFiles/doc:
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating API documentation with Doxygen"
-	/usr/bin/doxygen /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/Doxyfile
+	/usr/bin/doxygen /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/Doxyfile
 
 doc: CMakeFiles/doc
 doc: CMakeFiles/doc.dir/build.make
@@ -66,6 +66,6 @@ CMakeFiles/doc.dir/clean:
 .PHONY : CMakeFiles/doc.dir/clean
 
 CMakeFiles/doc.dir/depend:
-	cd /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/CMakeFiles/doc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles/doc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doc.dir/depend
 

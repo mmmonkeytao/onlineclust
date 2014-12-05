@@ -2,7 +2,7 @@
 #define KERNELOSC_H
 
 
-#include "GPlib/GP_CovarianceFunction.h"
+#include "GPlib/GP_CovarianceFunction.hh"
 #include "OnlineStarClustering.h"
 
 

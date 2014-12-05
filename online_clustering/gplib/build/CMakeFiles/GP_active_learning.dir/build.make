@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib
+CMAKE_SOURCE_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build
+CMAKE_BINARY_DIR = /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/GP_active_learning.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/GP_active_learning.dir/flags.make
 
 CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.o: CMakeFiles/GP_active_learning.dir/flags.make
 CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.o: ../test/gp_active_learning.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.o -c /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gp_active_learning.cc
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.o -c /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gp_active_learning.cc
 
 CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gp_active_learning.cc > CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gp_active_learning.cc > CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.i
 
 CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/test/gp_active_learning.cc -o CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/gp_active_learning.cc -o CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.s
 
 CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.o.requires:
 .PHONY : CMakeFiles/GP_active_learning.dir/test/gp_active_learning.cc.o.requires
@@ -103,6 +103,6 @@ CMakeFiles/GP_active_learning.dir/clean:
 .PHONY : CMakeFiles/GP_active_learning.dir/clean
 
 CMakeFiles/GP_active_learning.dir/depend:
-	cd /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/clustering/gplib/build/CMakeFiles/GP_active_learning.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build /home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles/GP_active_learning.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/GP_active_learning.dir/depend
 

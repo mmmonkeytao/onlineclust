@@ -21,7 +21,8 @@ target_link_libraries(pcloud_2rgbd_test ${ONLINECLUST_PCLOUD_LIBRARY})
 
 ### test clustering ########
 #message("${ONLINECLUST_CLUST_INCLUDE}")
-include_directories("${ONLINECLUST_CLUST_INCLUDE}")
+include_directories(${ONLINECLUST_CLUST_INCLUDE})
+#message(${ONLINECLUST_CLUST_INCLUDE})
 add_executable(clust_test clustering/clust_test.cpp)
 target_link_libraries(clust_test ${ONLINECLUST_CLUST_LIBRARY})
 
@@ -31,6 +32,5 @@ target_link_libraries(clust_test ${ONLINECLUST_CLUST_LIBRARY})
 ### test overall system #######
 #include_directories(${ONLINECLUST_HMP_INCLUDE})
 add_executable(sys sys/main.cpp)
-target_link_libraries(sys ${ONLINECLUST_HMP_LIBRARY})
-
+target_link_libraries(sys ${ONLINECLUST_HMP_LIBRARY} ${ONLINECLUST_PCLOUD_LIBRARY} ${ONLINECLUST_CLUST_LIBRARY})
 
