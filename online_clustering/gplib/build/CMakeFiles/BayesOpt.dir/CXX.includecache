@@ -196,7 +196,7 @@ iostream
 sys/types.h
 -
 
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/bayes_opt.cc
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/bayes_opt.cc
 time.h
 -
 vector
@@ -206,23 +206,23 @@ iostream
 fstream
 -
 GPlib/GP_Constants.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Constants.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Constants.hh
 GPlib/GP_CovarianceFunction.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_CovarianceFunction.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_CovarianceFunction.hh
 GPlib/GP_DataSet.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_DataSet.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_DataSet.hh
 GPlib/GP_Histogram.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Histogram.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Histogram.hh
 GPlib/GP_InputParams.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_InputParams.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_InputParams.hh
 GPlib/GP_Evaluation.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Evaluation.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Evaluation.hh
 GPlib/GP_UniversalDataReader.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_UniversalDataReader.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_UniversalDataReader.hh
 GPlib/GP_Regression.hh
-/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Regression.hh
+/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/GPlib/GP_Regression.hh
 
-/usr/local/include/gsl/gsl_blas.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_blas.h
 gsl/gsl_vector.h
 -
 gsl/gsl_matrix.h
@@ -230,115 +230,115 @@ gsl/gsl_matrix.h
 gsl/gsl_blas_types.h
 -
 
-/usr/local/include/gsl/gsl_blas_types.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_blas_types.h
 gsl/gsl_cblas.h
 -
 
-/usr/local/include/gsl/gsl_block_char.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_char.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_complex_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_complex_double.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_complex_float.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_complex_float.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_complex_long_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_complex_long_double.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_double.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_float.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_float.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_int.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_int.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_long.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_long.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_long_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_long_double.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_short.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_short.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_uchar.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_uchar.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_uint.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_uint.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_ulong.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_ulong.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_block_ushort.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_block_ushort.h
 stdlib.h
 -
 gsl/gsl_errno.h
 -
 
-/usr/local/include/gsl/gsl_cblas.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_cblas.h
 stddef.h
 -
 
-/usr/local/include/gsl/gsl_cdf.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_cdf.h
 
-/usr/local/include/gsl/gsl_check_range.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_check_range.h
 stdlib.h
 -
 gsl/gsl_types.h
 -
 
-/usr/local/include/gsl/gsl_complex.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_complex.h
 
-/usr/local/include/gsl/gsl_eigen.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_eigen.h
 gsl/gsl_vector.h
 -
 gsl/gsl_matrix.h
 -
 
-/usr/local/include/gsl/gsl_errno.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_errno.h
 stdio.h
 -
 errno.h
@@ -346,15 +346,15 @@ errno.h
 gsl/gsl_types.h
 -
 
-/usr/local/include/gsl/gsl_inline.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_inline.h
 
-/usr/local/include/gsl/gsl_integration.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_integration.h
 stdlib.h
 -
 gsl/gsl_math.h
 -
 
-/usr/local/include/gsl/gsl_linalg.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_linalg.h
 gsl/gsl_mode.h
 -
 gsl/gsl_permutation.h
@@ -364,13 +364,13 @@ gsl/gsl_vector.h
 gsl/gsl_matrix.h
 -
 
-/usr/local/include/gsl/gsl_machine.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_machine.h
 limits.h
 -
 float.h
 -
 
-/usr/local/include/gsl/gsl_math.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_math.h
 math.h
 -
 gsl/gsl_sys.h
@@ -388,7 +388,7 @@ gsl/gsl_pow_int.h
 gsl/gsl_minmax.h
 -
 
-/usr/local/include/gsl/gsl_matrix.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix.h
 gsl/gsl_matrix_complex_long_double.h
 -
 gsl/gsl_matrix_complex_double.h
@@ -418,7 +418,7 @@ gsl/gsl_matrix_uchar.h
 gsl/gsl_matrix_char.h
 -
 
-/usr/local/include/gsl/gsl_matrix_char.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_char.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -432,7 +432,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_char.h
 -
 
-/usr/local/include/gsl/gsl_matrix_complex_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_complex_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -446,7 +446,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_complex_double.h
 -
 
-/usr/local/include/gsl/gsl_matrix_complex_float.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_complex_float.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -460,7 +460,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_complex_float.h
 -
 
-/usr/local/include/gsl/gsl_matrix_complex_long_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_complex_long_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -474,7 +474,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_complex_long_double.h
 -
 
-/usr/local/include/gsl/gsl_matrix_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -488,7 +488,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_double.h
 -
 
-/usr/local/include/gsl/gsl_matrix_float.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_float.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -502,7 +502,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_float.h
 -
 
-/usr/local/include/gsl/gsl_matrix_int.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_int.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -516,7 +516,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_int.h
 -
 
-/usr/local/include/gsl/gsl_matrix_long.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_long.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -530,7 +530,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_long.h
 -
 
-/usr/local/include/gsl/gsl_matrix_long_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_long_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -544,7 +544,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_long_double.h
 -
 
-/usr/local/include/gsl/gsl_matrix_short.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_short.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -558,7 +558,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_short.h
 -
 
-/usr/local/include/gsl/gsl_matrix_uchar.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_uchar.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -572,7 +572,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_uchar.h
 -
 
-/usr/local/include/gsl/gsl_matrix_uint.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_uint.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -586,7 +586,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_uint.h
 -
 
-/usr/local/include/gsl/gsl_matrix_ulong.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_ulong.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -600,7 +600,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_ulong.h
 -
 
-/usr/local/include/gsl/gsl_matrix_ushort.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_matrix_ushort.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -614,7 +614,7 @@ gsl/gsl_check_range.h
 gsl/gsl_vector_ushort.h
 -
 
-/usr/local/include/gsl/gsl_min.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_min.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -622,15 +622,15 @@ gsl/gsl_types.h
 gsl/gsl_math.h
 -
 
-/usr/local/include/gsl/gsl_minmax.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_minmax.h
 gsl/gsl_inline.h
 -
 
-/usr/local/include/gsl/gsl_mode.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_mode.h
 gsl/gsl_inline.h
 -
 
-/usr/local/include/gsl/gsl_multimin.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_multimin.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -644,9 +644,9 @@ gsl/gsl_matrix.h
 gsl/gsl_min.h
 -
 
-/usr/local/include/gsl/gsl_nan.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_nan.h
 
-/usr/local/include/gsl/gsl_permutation.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_permutation.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -658,19 +658,19 @@ gsl/gsl_inline.h
 gsl/gsl_check_range.h
 -
 
-/usr/local/include/gsl/gsl_pow_int.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_pow_int.h
 gsl/gsl_inline.h
 -
 
-/usr/local/include/gsl/gsl_precision.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_precision.h
 gsl/gsl_types.h
 -
 
-/usr/local/include/gsl/gsl_randist.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_randist.h
 gsl/gsl_rng.h
 -
 
-/usr/local/include/gsl/gsl_rng.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_rng.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -680,7 +680,7 @@ gsl/gsl_errno.h
 gsl/gsl_inline.h
 -
 
-/usr/local/include/gsl/gsl_sf.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf.h
 gsl/gsl_sf_result.h
 -
 gsl/gsl_sf_airy.h
@@ -742,13 +742,13 @@ gsl/gsl_sf_trig.h
 gsl/gsl_sf_zeta.h
 -
 
-/usr/local/include/gsl/gsl_sf_airy.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_airy.h
 gsl/gsl_mode.h
 -
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_bessel.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_bessel.h
 stdlib.h
 -
 gsl/gsl_mode.h
@@ -758,127 +758,127 @@ gsl/gsl_precision.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_clausen.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_clausen.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_coulomb.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_coulomb.h
 gsl/gsl_mode.h
 -
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_coupling.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_coupling.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_dawson.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_dawson.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_debye.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_debye.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_dilog.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_dilog.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_elementary.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_elementary.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_ellint.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_ellint.h
 gsl/gsl_mode.h
 -
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_elljac.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_elljac.h
 
-/usr/local/include/gsl/gsl_sf_erf.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_erf.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_exp.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_exp.h
 gsl/gsl_sf_result.h
 -
 gsl/gsl_precision.h
 -
 
-/usr/local/include/gsl/gsl_sf_expint.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_expint.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_fermi_dirac.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_fermi_dirac.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_gamma.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_gamma.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_gegenbauer.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_gegenbauer.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_hyperg.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_hyperg.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_laguerre.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_laguerre.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_lambert.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_lambert.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_legendre.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_legendre.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_log.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_log.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_mathieu.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_mathieu.h
 gsl/gsl_sf_result.h
 -
 gsl/gsl_eigen.h
 -
 
-/usr/local/include/gsl/gsl_sf_pow_int.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_pow_int.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_psi.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_psi.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_result.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_result.h
 
-/usr/local/include/gsl/gsl_sf_synchrotron.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_synchrotron.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_transport.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_transport.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_trig.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_trig.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sf_zeta.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sf_zeta.h
 gsl/gsl_sf_result.h
 -
 
-/usr/local/include/gsl/gsl_sys.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_sys.h
 
-/usr/local/include/gsl/gsl_types.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_types.h
 
-/usr/local/include/gsl/gsl_vector.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector.h
 gsl/gsl_vector_complex_long_double.h
 -
 gsl/gsl_vector_complex_double.h
@@ -908,7 +908,7 @@ gsl/gsl_vector_uchar.h
 gsl/gsl_vector_char.h
 -
 
-/usr/local/include/gsl/gsl_vector_char.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_char.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -922,9 +922,9 @@ gsl/gsl_check_range.h
 gsl/gsl_block_char.h
 -
 
-/usr/local/include/gsl/gsl_vector_complex.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_complex.h
 
-/usr/local/include/gsl/gsl_vector_complex_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_complex_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -942,7 +942,7 @@ gsl/gsl_vector_complex.h
 gsl/gsl_block_complex_double.h
 -
 
-/usr/local/include/gsl/gsl_vector_complex_float.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_complex_float.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -960,7 +960,7 @@ gsl/gsl_vector_complex.h
 gsl/gsl_block_complex_float.h
 -
 
-/usr/local/include/gsl/gsl_vector_complex_long_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_complex_long_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -978,7 +978,7 @@ gsl/gsl_vector_complex.h
 gsl/gsl_block_complex_long_double.h
 -
 
-/usr/local/include/gsl/gsl_vector_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -992,7 +992,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_double.h
 -
 
-/usr/local/include/gsl/gsl_vector_float.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_float.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1006,7 +1006,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_float.h
 -
 
-/usr/local/include/gsl/gsl_vector_int.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_int.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1020,7 +1020,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_int.h
 -
 
-/usr/local/include/gsl/gsl_vector_long.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_long.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1034,7 +1034,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_long.h
 -
 
-/usr/local/include/gsl/gsl_vector_long_double.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_long_double.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1048,7 +1048,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_long_double.h
 -
 
-/usr/local/include/gsl/gsl_vector_short.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_short.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1062,7 +1062,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_short.h
 -
 
-/usr/local/include/gsl/gsl_vector_uchar.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_uchar.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1076,7 +1076,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_uchar.h
 -
 
-/usr/local/include/gsl/gsl_vector_uint.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_uint.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1090,7 +1090,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_uint.h
 -
 
-/usr/local/include/gsl/gsl_vector_ulong.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_ulong.h
 stdlib.h
 -
 gsl/gsl_types.h
@@ -1104,7 +1104,7 @@ gsl/gsl_check_range.h
 gsl/gsl_block_ulong.h
 -
 
-/usr/local/include/gsl/gsl_vector_ushort.h
+/usr/local/Cellar/gsl/1.16/include/gsl/gsl_vector_ushort.h
 stdlib.h
 -
 gsl/gsl_types.h

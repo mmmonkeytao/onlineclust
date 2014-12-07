@@ -150,7 +150,7 @@ void PCloud::vis_pointcloud2rangeimage(_pclType1::Ptr &pcloud, std::vector<pcl::
     // --------------------------------------------
     // -----save sub-clusters in rangeImage[]-----
     // --------------------------------------------
-    pcl::RangeImage range_image[cluster_indices.size()];
+    pcl::RangeImage *range_image = new pcl::RangeImage[cluster_indices.size()];
 
     uint i = 0;
     for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (); it != cluster_indices.end (); ++it)
@@ -177,7 +177,7 @@ void PCloud::vis_pointcloud2rangeimage(_pclType1::Ptr &pcloud, std::vector<pcl::
 
         //range_image[i].createFromPointCloudWithViewpoints(*sub_cluster.get(), angularResolution, maxAngleWidth, maxAngleHeight,
         //                                                  coordinate_frame, noiseLevel, minRange, borderSize);
-
+	delete[] range_image;
         i++;
     }
 

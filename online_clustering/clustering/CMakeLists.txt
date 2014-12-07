@@ -7,16 +7,17 @@ set(SOURCES src/Vertex.cpp
 
 set(HEADER_SUBDIR "include")
 
-set(PUBLIC_HEADERS include/Vertex.h  
-                   include/KernelOSC.h  
-		   include/Mesh.h  
-		   include/Cluster.h  
-		   include/OnlineStarClustering.h  
-		   include/ClusterList.h
+set(PUBLIC_HEADERS  include/Vertex.h
+                    include/KernelOSC.h  
+		    include/Mesh.h  
+		    include/Cluster.h  
+		    include/OnlineStarClustering.h  
+		    include/ClusterList.h
 		   )
 
 set(ONLINECLUST_CLUST_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(ONLINECLUST_CLUST_LIBRARY online_clust_clustering)
+
 
 include_directories(${ONLINECLUST_CLUST_INCLUDE})
 

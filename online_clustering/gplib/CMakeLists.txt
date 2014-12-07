@@ -22,6 +22,10 @@ find_library(GSL_LIBRARY gsl)
 find_library(GSLCBLAS_LIBRARY gslcblas)
 include_directories(${GSL_INCLUDE_DIR})
 
+find_package(BOOST REQUIRED)
+set(BOOST_INCLUDE_DIR "/usr/local/Cellar/boost/1.56.0/include/")
+include_directories(${BOOST_INCLUDE_DIR})
+
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in 

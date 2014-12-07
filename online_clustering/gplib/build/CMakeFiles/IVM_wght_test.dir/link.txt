@@ -1,1 +1,1 @@
-/usr/bin/c++       CMakeFiles/IVM_wght_test.dir/test/ivm_wght_test.cc.o  -o IVM_wght_test -rdynamic libgplib.a /usr/local/lib/libgsl.so /usr/local/lib/libgslcblas.so -Wl,-rpath,/usr/local/lib 
+/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/IVM_wght_test.dir/test/ivm_wght_test.cc.o  -o IVM_wght_test  libgplib.a /usr/local/lib/libgsl.dylib /usr/local/lib/libgslcblas.dylib 

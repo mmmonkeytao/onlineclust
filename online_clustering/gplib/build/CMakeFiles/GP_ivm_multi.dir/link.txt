@@ -1,1 +1,1 @@
-/usr/bin/c++       CMakeFiles/GP_ivm_multi.dir/test/gp_ivm_multi.cc.o  -o GP_ivm_multi -rdynamic libgplib.a /usr/local/lib/libgsl.so /usr/local/lib/libgslcblas.so -Wl,-rpath,/usr/local/lib 
+/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/GP_ivm_multi.dir/test/gp_ivm_multi.cc.o  -o GP_ivm_multi  libgplib.a /usr/local/lib/libgsl.dylib /usr/local/lib/libgslcblas.dylib 

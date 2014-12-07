@@ -1,5 +1,5 @@
 #include "data_proc.h"
-#include "opencv2/imgcodecs/imgcodecs_c.h"
+//#include "opencv2/imgcodecs/imgcodecs_c.h"
 #include <opencv2/highgui/highgui.hpp>
 #include <cstdint>
 #include <cmath>
@@ -159,7 +159,7 @@ void DataProc::RGBD_reader(const char *file, char*type, Mat&matImage)
 
     matImage.convertTo(matImage, CV_16U); // 16bit unsigned
   }
-  else {throw runtime_error("\nUnknown type of image.\n");}
+  else throw runtime_error("\nUnknown type of image.\n");
 }
 
 void DataProc::ShowImgDim(Mat const&Image)const

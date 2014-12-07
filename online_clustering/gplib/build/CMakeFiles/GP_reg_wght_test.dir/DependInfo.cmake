@@ -1,23 +1,24 @@
 # The set of languages for which implicit dependencies are needed:
-SET(CMAKE_DEPENDS_LANGUAGES
+set(CMAKE_DEPENDS_LANGUAGES
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
-SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/test/regr_wght_test.cc" "/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles/GP_reg_wght_test.dir/test/regr_wght_test.cc.o"
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/test/regr_wght_test.cc" "/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles/GP_reg_wght_test.dir/test/regr_wght_test.cc.o"
   )
-SET(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # Targets to which this target links.
-SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/jimmy/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles/gplib.dir/DependInfo.cmake"
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/Users/taoyeandy/Documents/workspace/thesis/thesis_code/online_clustering/gplib/build/CMakeFiles/gplib.dir/DependInfo.cmake"
   )
 
 # The include file search paths:
-SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/local/include"
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/usr/local/Cellar/gsl/1.16/include"
+  "/usr/local/Cellar/boost/1.56.0/include"
   "../include"
   )
-SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+set(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+set(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
