@@ -15,8 +15,8 @@
 #include <Eigen/Sparse>
 
 #include "Vertex.h"
-#include "Cluster.h"
-#include "ClusterList.h"
+// #include "Cluster.h"
+// #include "ClusterList.h"
 
 using namespace Eigen;
 

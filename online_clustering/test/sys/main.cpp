@@ -28,7 +28,7 @@ int main(){
   MatrixXd x{44,21};
   x.setRandom();
   uint splevel[2] = {5, 10};
-  hmpObj.loadDct("dic_1st_layer_5x5_depth.dat", "dic_2nd_layer_5x5_depth.dat", "depth");
+  hmpObj.load2Dcts("dic_1st_layer_5x5_depth.dat", "dic_2nd_layer_5x5_depth.dat", "depth");
 
   // MatrixXd feature;
   // hmpObj.hmp_core(x,"depth",splevel, feature);
@@ -116,7 +116,8 @@ int main(){
         delete[] range_image;
 
       } else {
-	viewer.spinOnce(100);
+	//viewer.spinOnce(100);
+	break;
       }
 
       //boost::this_thread::sleep (boost::posix_time::microseconds (1000000));

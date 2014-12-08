@@ -1,55 +1,38 @@
-#include "omp.h"
-#include <Eigen/Dense>
-#include <iostream>
+#include "hmp.h"
 #include <fstream>
 #include <cmath>
-#include <vector>
 
-using namespace std;
-using namespace onlineclust;
 
-void OMP::loadDct(const char* file, int rows, int cols, MatrixXd& D)
+void onlineclust::loadDct(const char* file, int rows, int cols, Eigen::MatrixXd& D)
 {
-  ifstream input(file);
-  D = MatrixXd{rows, cols};
+  std::ifstream input(file);
+  D = Eigen::MatrixXd{rows, cols};
 
-  cout << "Loading dictionary:\n";
-  for(int j = 0; j < rows; ++j)
-    for(int i = 0; i < cols; ++i)
+  std::cout << "Loading dictionary:\n";
+
+  for(uint j = 0; j < rows; ++j)
+    for(uint i = 0; i < cols; ++i)
       input >> D(j,i);
 
-  cout << "Load completes. Dictionary size is: " << D.rows() << "x" << D.cols() << endl;
+  std::cout << "Loading completes. Dictionary size is: " << D.rows() << "x" << D.cols() << std::endl;
 }
 
-
-void OMP::maxIdxVec(VectorXd const& v, unsigned &maxIdx)
-{
-  double max = -1;
-  
-  for(int i = 0; i < v.size(); i++){
-    if(fabs(v.coeff(i)) > max){
-      max = fabs(v.coeff(i));
-      maxIdx = i;
-    }
-  }
-}
-
-
-void OMP::remove_dc(MatrixXd &X, const char* type)
+void onlineclust::remove_dc(Eigen::MatrixXd &X, const char* type)
 {
   if(!strcmp(type, "column")){
-    unsigned szr = X.rows();
-    VectorXd mean = MatrixXd::Zero(1,X.cols());
-    for(int i = 0; i < X.rows(); ++i){
+    
+    Eigen::MatrixXd mean = Eigen::MatrixXd::Zero(1,X.cols());
+
+    for(uint i = 0; i < X.rows(); ++i){
       mean += X.row(i);
     }
-    mean /= (double)szr;
+    mean /= (double)X.rows();
 
-    for(int i = 0; i < X.rows(); ++i){
+    for(uint i = 0; i < X.rows(); ++i){
       X.row(i) -= mean;
     }
   } else {
-    cerr << "\nUnknown type in OMP::remove_dc.\n";
+    std::cerr << "\nUnknown type in OMP::remove_dc.\n";
   }
 }
 

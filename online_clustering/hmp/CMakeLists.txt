@@ -1,10 +1,10 @@
 set(SOURCES src/hmp.cpp
-            src/omp.cpp)
-	    #src/helper.cpp 
+            src/omp.cpp
+	    src/helper.cpp) 
 
 set(HEADER_SUBDIR "include")
 
-set(PUBLIC_HEADERS include/hmp.h include/omp.h)
+set(PUBLIC_HEADERS include/hmp.h)
 
 set(ONLINECLUST_HMP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(ONLINECLUST_HMP_LIBRARY online_clust_hmp)

@@ -1,19 +1,18 @@
 #include "data_proc.h"
-#include "omp.h"
 #include <opencv2/opencv.hpp>
 
 using namespace onlineclust;
 using namespace cv;
 using namespace Eigen;
+using namespace data_proc;
 
 int main(){
 
-  DataProc test;
   try{
     Mat Image;
     char str[] = "desk_1_1.png";
     char type[] = "RGB";
-    test.RGBD_reader(str, type,Image);
+    RGBD_reader(str, type,Image);
     //test.ShowImgDim(Image);
     //test.ImgShow(Image,"original");
     //cout << Image.step[0] *Image.step[1] << endl;
@@ -21,7 +20,7 @@ int main(){
     //float centx = Image.rows/2;
     //float centy = Image.cols/2;
     Mat patch;
-    test.im2patchMat(Image,{5,5},{1,1},patch);
+    im2patchMat(Image,{5,5},{1,1},patch);
     //test.ShowImgDim(patch);
     //Mat subImage;
     //getRectSubPix(patch, {5,5}, {30,10000}, subImage);

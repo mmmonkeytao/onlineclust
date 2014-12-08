@@ -1,15 +1,16 @@
 #include <iostream>
 #include <chrono>
 #include <Eigen/Dense>
-#include "omp.h"
+#include "hmp.h"
 
 using namespace onlineclust;
+using namespace onlineclust::omp;
 using namespace std;
 using namespace std::chrono;
+using namespace Eigen;
 
 int main(){
   
-  OMP test;
 
   // {
   //   // test maxIdxVec function
@@ -17,7 +18,7 @@ int main(){
   //   a << 1,4,4,12,-2,4;
 
   //   unsigned result;
-  //   test.maxIdxVec(a, result);
+  //   maxIdxVec(a, result);
   //   cout << "vector:\n" << a.transpose() << endl
   // 	 << "max variable idx:\n" << result << endl; 
   // }
@@ -35,7 +36,7 @@ int main(){
   //   LLT<MatrixXd> llt{A};
   //   MatrixXd L = llt.matrixL();
   //   VectorXd x{5};
-  //   test.LL_solver(L, a, "LL", x);
+  //   LL_solver(L, a, "LL", x);
   //   cout << "Matrix L is:\n" << L << endl
   //   	 << "\nLL solver result x:\n" << x.transpose() << endl
   //   	 << "Eigen solver result x:\n" << llt.solve(a).transpose() << endl;
@@ -82,22 +83,22 @@ int main(){
     // G = D.transpose() * D;
     // vector<unsigned> I = {0,2};
     // unsigned k = 2;
-    // test.updateL(L,G,I,k);
+    // updateL(L,G,I,k);
     // cout << "new L is:\n" << L << endl;
   }
 
-  // {
-  //   // test Batch_OMP code
-  //   MatrixXd X{15,1};
-  //   X.setRandom();
-  //   MatrixXd D{15,1000};
-  //   D.setRandom();
-  //   MatrixXd Gamma;
-  //   auto t1 = high_resolution_clock::now();
-  //   test.Batch_OMP(X,D,4,Gamma);
-  //   auto t2 = high_resolution_clock::now();
-  //   cout << "Sparse codes is:\n" << X-D*Gamma << endl
-  // 	 << "computation time: (micros)" << duration_cast<milliseconds>(t2-t1).count() << endl;
-  // }
+  {
+    // test Batch_OMP code
+    MatrixXd X{15,1};
+    X.setRandom();
+    MatrixXd D{15,1000};
+    D.setRandom();
+    MatrixXd Gamma;
+    auto t1 = high_resolution_clock::now();
+    Batch_OMP(X,D,4,Gamma);
+    auto t2 = high_resolution_clock::now();
+    cout << "Sparse codes is:\n" << X-D*Gamma << endl
+  	 << "computation time: (micros)" << duration_cast<milliseconds>(t2-t1).count() << endl;
+ }
   return 0;
 }

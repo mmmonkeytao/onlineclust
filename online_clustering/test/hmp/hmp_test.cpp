@@ -1,16 +1,18 @@
 #include "data_proc.h"
-#include "omp.h"
+#include "hmp.h"
 #include <opencv2/opencv.hpp>
 #include <Eigen/Dense>
 #include <Eigen/Core>
 
 using namespace onlineclust;
+using namespace onlineclust::omp;
 using namespace cv;
+using namespace Eigen;
+using namespace std;
+using namespace data_proc;
 
 int main(){
 
-  DataProc test;
-  OMP omp;
   try{
 
     // { // test r g b channel
@@ -63,48 +65,49 @@ int main(){
       // test.RGBD_reader(str, type,Image);
 
       // test.ShowImgDim(Image);
-      // //test.ImgShow(Image,"original");
+    //   // //test.ImgShow(Image,"original");
       
-      // Mat patch;
-      // test.im2patchMat(Image,{5,5},{1,1},patch);
+    //   // Mat patch;
+    //   // test.im2patchMat(Image,{5,5},{1,1},patch);
 
-      // test.ShowImgDim(patch);
-      // cout << patch.at<double>(70,10000);
-    }
+    //   // test.ShowImgDim(patch);
+    //   // cout << patch.at<double>(70,10000);
+    // }
 
-    {
-      // test sparse coding
-      //test patch transformation
+    // {
+    //   // test sparse coding
+    //   //test patch transformation
       Mat Image;
       char str[] = "desk_1_1.png";
       char type[] = "RGB";
-      test.RGBD_reader(str, type,Image);
 
-      test.ShowImgDim(Image);
+      RGBD_reader(str, type,Image);
+      ShowImgDim(Image);
       //test.ImgShow(Image,"original");
       
       MatrixXd patch;
       Size stepsz = {5,5};
       Size psz = {5,5};
-      test.im2patchMat(Image,psz,stepsz,patch);
+      im2patchMat(Image,psz,stepsz,patch);
       cout << "\nPatch Matrix Size: " << patch.rows() << "x" << patch.cols() << endl;
 
       MatrixXd D;
-      omp.loadDct("rgbdevel_fulldic_1st_layer_5x5_crop.dat",75,150,D);  
+      loadDct("rgbdevel_fulldic_1st_layer_5x5_crop.dat",75,150,D);  
       // convert Mat to MatrixXd
       //      Map<MatrixXd, RowMajor, Stride<1,Dynamic> > im(reinterpret_cast<double*>(patch.data), patch.rows, patch.cols, Stride<1,Dynamic>(1,patch.cols));
       
       MatrixXd Gamma;
       //omp.remove_dc(patch, "column");
-      patch -= MatrixXd::Ones(patch.rows(), patch.cols()) * 0.5;
-      omp.Batch_OMP(patch, D, 5, Gamma); 
+      double mean = patch.mean();
+      patch -= MatrixXd::Ones(patch.rows(), patch.cols()) * mean;
+      Batch_OMP(patch, D, 5, Gamma); 
 
       // reconstruct to original image
       MatrixXd m = D * Gamma;
       Mat mat; 
       
-      m += MatrixXd::Ones(patch.rows(), patch.cols()) * 0.5;      
-      test.reconstructIm(m, Image.size(), psz, stepsz, mat);
+      m += MatrixXd::Ones(patch.rows(), patch.cols()) * mean;      
+      reconstructIm(m, Image.size(), psz, stepsz, mat);
       imwrite("cell_phone_1_1_6_crop_reconstruct.png", mat);
     }
 	

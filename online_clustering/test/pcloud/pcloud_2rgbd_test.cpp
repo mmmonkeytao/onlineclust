@@ -1,6 +1,3 @@
-#include <pcl/io/pcd_io.h>
-#include <pcl/point_types.h>
-
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
@@ -39,18 +36,18 @@ int main(int argc, char **argv)
     Cloud.euclidean_cluster_extraction(pcloud, cluster_indices);
     Cloud.vis_pointcloud2rangeimage(pcloud, cluster_indices);
 
-    // calculate normals
-    //pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
-    //cloud_normal(ocloud, cloud_normals, radius);
+    // //calculate normals
+    // pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
+    // Cloud.cloud_normal(pcloud, cloud_normals);
 
-    // remove all points before adding
-    //pcl::visualization::PointCloudColorHandlerGenericField<pcl::PointXYZI> intensity_distribution(ocloud, "intensity");
-    //viewer.removeAllPointClouds();
+    // //remove all points before adding
+    // pcl::visualization::PointCloudColorHandlerGenericField<pcl::PointXYZI> intensity_distribution(pcloud, "intensity");
+    // viewer.removeAllPointClouds();
 
-    //viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3);
-    //viewer.addPointCloudNormals<pcl::PointXYZI, pcl::Normal> (ocloud, cloud_normals, 80, 0.5, "normals");
-    //viewer.addPointCloud<pcl::PointXYZI>(ocloud, intensity_distribution, "KITTI Viewer");
-    //viewer.spinOnce();
+    // viewer.setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3);
+    // viewer.addPointCloudNormals<pcl::PointXYZI, pcl::Normal> (pcloud, cloud_normals, 80, 0.5, "normals");
+    // viewer.addPointCloud<pcl::PointXYZI>(pcloud, intensity_distribution, "KITTI Viewer");
+    // viewer.spinOnce();
       
     return 0;
 }

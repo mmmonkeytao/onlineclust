@@ -23,7 +23,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMakeScripts_MODULE_DIR}")
 
 # set compiler flags for c++
 #set(CMAKE_CXX_COMPILER "/usr/bin/g++")
-set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -g -O3") 
+set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -g -O3 ")
+
 #-Werror -Wfatal-errors")
 
 # Bring in helper functions to make dealing with cache internal variables easier
@@ -32,6 +33,8 @@ include(CacheInternalHelpers)
 #######  Package Use ########
 # QT version
 set(DESIRED_QT_VERSION 4)
+
+########
 
 ####### OpenCV ##########
 #OPTION(USE_OPENCV "Using OpenCV Library." ON)

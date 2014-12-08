@@ -1,51 +1,48 @@
 #include "hmp.h"
-#include "omp.h"
 #include <Eigen/Core>
 #include <cstring>
 #include <stdexcept>
 
-using namespace onlineclust;
 
-void HMP::loadDct(const char* flayer1, const char*flayer2, const char* type)
+void onlineclust::HMP::load2Dcts(const char* layer1, const char*layer2, const char* type)
 {
-  OMP omp;
   if(!strcmp(type, "rgb")){
-    omp.loadDct(flayer1, 75, 150, this->D1rgb);
-    omp.loadDct(flayer2, 2400, 1000, this->D2rgb);
+    loadDct(layer1, 75, 150, this->D1rgb);
+    loadDct(layer2, 2400, 1000, this->D2rgb);
   } else {
-    omp.loadDct(flayer1, 25, 75, this->D1depth);
-    omp.loadDct(flayer2, 1200, 1000, this->D2depth);
+    loadDct(layer1, 25, 75, this->D1depth);
+    loadDct(layer2, 1200, 1000, this->D2depth);
   }
 }
 
-void HMP::hmp_core(MatrixXd& X, const char* type, uint SPlevel[2], MatrixXd& fea)
+void onlineclust::HMP::hmp_core(Eigen::MatrixXd& X, const char* type, uint SPlevel[2], Eigen::MatrixXd& fea)
 {
-  OMP omp;
   uint nchannel = (!strcmp(type,"rgb"))? 3 : 1;
  
   //matSize imSize =  matSize(X.rows(), X.cols()/3);
   matSize gamma_sz =  matSize(ceil((float)(X.cols()/nchannel - (uint)(patchsz.width/2) * 2)/(float)stepsz.width1),ceil((float)(X.rows() - (uint)(patchsz.height/2) * 2)/(float)stepsz.height1));
 
-  MatrixXd patchMat;
+  Eigen::MatrixXd patchMat;
   mat2patch(X, type, gamma_sz, patchMat);
 
+  // remove dc part of signal
   char str[] = "column";
-  omp.remove_dc(patchMat, str);
+  remove_dc(patchMat, str);
   // 1st layer coding
-  MatrixXd Gamma; 
+  Eigen::MatrixXd Gamma; 
   
   if(nchannel == 3)
-    omp.Batch_OMP(patchMat, D1rgb, SPlevel[0], Gamma);
+    omp::Batch_OMP(patchMat, D1rgb, SPlevel[0], Gamma);
   else 
-    omp.Batch_OMP(patchMat, D1depth, SPlevel[0], Gamma);
+    omp::Batch_OMP(patchMat, D1depth, SPlevel[0], Gamma);
  
   matSize psz1 = matSize(4,4);
   MaxPool_layer1_mode1(Gamma, psz1, gamma_sz);
   // 2nd layer learning
   if(nchannel == 3)
-    omp.Batch_OMP(Gamma, D2rgb, SPlevel[1], fea);
+    omp::Batch_OMP(Gamma, D2rgb, SPlevel[1], fea);
   else
-    omp.Batch_OMP(Gamma, D2depth, SPlevel[1], fea);
+    omp::Batch_OMP(Gamma, D2depth, SPlevel[1], fea);
  
   matSize feaSize = matSize{gamma_sz.first/psz1.first, 
 			    gamma_sz.second/psz1.second};
@@ -53,20 +50,20 @@ void HMP::hmp_core(MatrixXd& X, const char* type, uint SPlevel[2], MatrixXd& fea
   MaxPool_layer2(fea, feaSize, pool);
 }
 
-void HMP::MaxPool_layer2(MatrixXd &fea, matSize const&feaSize, uint pool[3])
+void onlineclust::HMP::MaxPool_layer2(Eigen::MatrixXd &fea, matSize const&feaSize, uint pool[3])
 { 
   uint rows = fea.rows();
   //uint cols = fea.cols();
-  MatrixXd temp = std::move(fea);
+  Eigen::MatrixXd temp = std::move(fea);
   uint nr = pow(pool[0],2) + pow(pool[1],2) + pow(pool[2],2);
-  fea = VectorXd::Zero(static_cast<int>(nr*rows),1);
+  fea = Eigen::VectorXd::Zero(static_cast<int>(nr*rows),1);
   
   // pool 1
-  MatrixXd maxfea{rows, 16};
+  Eigen::MatrixXd maxfea{rows, 16};
   uint psw = feaSize.first / pool[0];
   uint psh = feaSize.second / pool[0];
   uint blocksz = psw * psh;
-  MatrixXd max_tmp{rows, blocksz};
+  Eigen::MatrixXd max_tmp{rows, blocksz};
   
   for(uint j = 0; j < pool[0]; ++j )
     for(uint i = 0; i < pool[0]; ++i){
@@ -83,7 +80,7 @@ void HMP::MaxPool_layer2(MatrixXd &fea, matSize const&feaSize, uint pool[3])
   psw = feaSize.first / pool[1];
   psh = feaSize.second / pool[1];
   blocksz = psw * psh;
-  max_tmp = MatrixXd{rows, blocksz};
+  max_tmp = Eigen::MatrixXd{rows, blocksz};
   uint offset = pool[0] * pool[0];
 
   for(uint j = 0; j < pool[1]; ++j )
@@ -110,15 +107,15 @@ void HMP::MaxPool_layer2(MatrixXd &fea, matSize const&feaSize, uint pool[3])
 
 }
 
-void HMP::MaxPool_layer1_mode1(MatrixXd &Gamma, matSize const&psz, matSize const &realsz)
+void onlineclust::HMP::MaxPool_layer1_mode1(Eigen::MatrixXd &Gamma, matSize const&psz, matSize const &realsz)
 {
   uint feaSize = Gamma.rows();
-  MatrixXd temp = std::move(Gamma);
+  Eigen::MatrixXd temp = std::move(Gamma);
   
   uint nw = realsz.first / psz.first;
   uint nh = realsz.second / psz.second;
 
-  Gamma = MatrixXd{psz.first * psz.second * temp.rows(), nw * nh};
+  Gamma = Eigen::MatrixXd{psz.first * psz.second * temp.rows(), nw * nh};
   
   uint spw = 0, sph = 0;
   for(uint j = 0; j < nh; ++j)
@@ -136,7 +133,7 @@ void HMP::MaxPool_layer1_mode1(MatrixXd &Gamma, matSize const&psz, matSize const
     }
 }
 
-void HMP::mat2patch(MatrixXd const& im, const char*type, matSize const& rsz, MatrixXd &patchMat)
+void onlineclust::HMP::mat2patch(Eigen::MatrixXd const& im, const char*type, matSize const& rsz, Eigen::MatrixXd &patchMat)
 {
   uint nchannel;
   if(!strcmp(type, "rgb")){
@@ -144,16 +141,16 @@ void HMP::mat2patch(MatrixXd const& im, const char*type, matSize const& rsz, Mat
   } else if (!strcmp(type, "depth")){
     nchannel = 1;
   } else {
-    throw runtime_error("\nUnknow type!!!\n");
+    throw std::runtime_error("\nUnknow type!!!\n");
   }
 
   uint nPatchx = rsz.first; 
   uint nPatchy = rsz.second;
 
-  patchMat = MatrixXd{patchsz.width * patchsz.height * nchannel,
+  patchMat = Eigen::MatrixXd{patchsz.width * patchsz.height * nchannel,
 		   nPatchx * nPatchy};
   
-  unsigned cols = 0, srow, scol;
+  uint cols = 0, srow, scol;
   int npx = patchsz.height * patchsz.width;
 
   for(uint j = 0; j < nPatchy; ++j){

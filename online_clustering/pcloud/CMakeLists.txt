@@ -1,18 +1,10 @@
-#find_package(PCL 1.7 REQUIRED)
-#include_directories(${PCL_INCLUDE_DIRS})
-#link_directories(${PCL_LIBRARY_DIRS})
-#add_definitions(${PCL_DEFINITIONS})
-
-#find_package(VTK REQUIRED)
-#include(${VTK_USE_FILE})
-
 set(HEADER_SUBDIR "include")
 
 set(PUBLIC_HEADERS ${HEADER_SUBDIR}/pcloud.h)
 
-set(SOURCES src/pcloud.cpp) 
-  #src/RangeImage.cpp 
-#           src/helper.cpp 
+set(SOURCES src/pcloud.cpp 
+            src/pcloud_RangeImage.cpp
+            src/pcloud_segment.cpp) 
 #           src/segmentation.cpp 
 #           src/cloud_normal.cpp 
 #	   src/cluster_extract.cpp)

@@ -11,7 +11,7 @@ target_link_libraries(omp_test ${ONLINECLUST_HMP_LIBRARY})
 add_executable(hmp_test hmp/hmp_test.cpp)
 target_link_libraries(hmp_test ${ONLINECLUST_HMP_LIBRARY}  ${ONLINECLUST_DATAPROC_LIBRARY})
 
-### test pcloud visualize point clouds
+# ### test pcloud visualize point clouds
 include_directories(${ONLINECLUST_PCLOUD_INCLUDE})
 add_executable(pcloud_vis_test pcloud/pcloud_vis_test.cpp)
 target_link_libraries(pcloud_vis_test ${ONLINECLUST_PCLOUD_LIBRARY})
@@ -20,9 +20,7 @@ add_executable(pcloud_2rgbd_test pcloud/pcloud_2rgbd_test.cpp)
 target_link_libraries(pcloud_2rgbd_test ${ONLINECLUST_PCLOUD_LIBRARY})
 
 ### test clustering ########
-#message("${ONLINECLUST_CLUST_INCLUDE}")
 include_directories(${ONLINECLUST_CLUST_INCLUDE})
-#message(${ONLINECLUST_CLUST_INCLUDE})
 add_executable(clust_test clustering/clust_test.cpp)
 target_link_libraries(clust_test ${ONLINECLUST_CLUST_LIBRARY})
 
@@ -33,4 +31,4 @@ target_link_libraries(clust_test ${ONLINECLUST_CLUST_LIBRARY})
 #include_directories(${ONLINECLUST_HMP_INCLUDE})
 add_executable(sys sys/main.cpp)
 target_link_libraries(sys ${ONLINECLUST_HMP_LIBRARY} ${ONLINECLUST_PCLOUD_LIBRARY} ${ONLINECLUST_CLUST_LIBRARY})
-
+ 

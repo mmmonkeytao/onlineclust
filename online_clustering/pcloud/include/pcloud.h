@@ -1,19 +1,25 @@
-#ifndef PCLOUD_H
-#define PCLOUD_H
+#ifndef __PCLOUD_H__
+#define __PCLOUD_H__
 
 #include <iostream>
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
+#include <pcl/filters/conditional_removal.h>
+#include <pcl/filters/extract_indices.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/range_image/range_image.h>
+#include <pcl/segmentation/extract_clusters.h>
+#include <pcl/features/normal_3d_omp.h>
 
 namespace onlineclust{
   
   using _pclType1 = pcl::PointCloud<pcl::PointXYZI>;
-
+  
   class PCloud{
     
   public:
+
+    PCloud(): cloud(nullptr), camera(pcl::visualization::Camera()){}; 
     /// 
     /// NOTE: this function will allocate memories of 
     /// attribute *cloud
@@ -99,19 +105,20 @@ namespace onlineclust{
       camera.window_pos[1] = 52;
     }
     
-    struct fparam{
+    struct Fparam{
       // diff norm segmentation
       double scale1 = 0.1, 
-	     scale2 = 0.8, 
-	     radius = 0.9, 
-	     STD_DEVIATION = 0.6, 
-	     threshold = 0.13;
+	scale2 = 0.8, 
+	radius = 0.9, 
+	STD_DEVIATION = 0.6, 
+	threshold = 0.13;
       uint   NUM_NEIGHBORS = 45; 
       // plane model segmentation
       double distance_threshold = 0.5;
       // clustering for pcloud
-      double segradius = 0.5;       
+      double segradius = 0.5;
     }fparam;
+
     
     ~PCloud()
     {
@@ -122,7 +129,7 @@ namespace onlineclust{
   private:
     _pclType1 *cloud;
     // camera position parameters
-    pcl::visualization::Camera camera;
+     pcl::visualization::Camera camera;
 
   };
 
