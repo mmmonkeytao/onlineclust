@@ -4,6 +4,9 @@ set(HEADER_SUBDIR "include")
 
 set(PUBLIC_HEADERS ${HEADER_SUBDIR}/data_proc.h)
 
+# append include files
+#list(APPEND GLOBAL_INC_PATH ${PUBLIC_HEADERS})
+
 set(ONLINECLUST_DATAPROC_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(ONLINECLUST_DATAPROC_LIBRARY online_clust_dataproc)
 

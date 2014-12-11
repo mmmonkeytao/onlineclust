@@ -17,12 +17,20 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+# set all directories of all include files
+set(GLOABAL_INC_PATH)
+
+#
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  add_definitions(-arch x86_64)
+endif()
+
 # Point CMake to the directory containing various build scripts
 set(CMakeScripts_MODULE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 list(APPEND CMAKE_MODULE_PATH "${CMakeScripts_MODULE_DIR}")
 
 # set compiler flags for c++
-#set(CMAKE_CXX_COMPILER "/usr/bin/g++")
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
 set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -g -O3 ")
 
 #-Werror -Wfatal-errors")
@@ -88,13 +96,12 @@ set(ONLINECLUST_LIBRARIES
   "All individual libraries that go into the global one"
 )
 
-
 # add sub-directories
 add_subdirectory(pcloud)
 add_subdirectory(data_proc)
 add_subdirectory(hmp)
-add_subdirectory(test)
 add_subdirectory(clustering)
+add_subdirectory(test)
 
 #add_subdirectory(config)
 #add_subdirectory(app)
@@ -174,3 +181,13 @@ install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/clust_test" COMPONENT RUNTIME DESTINAT
 
 install(PROGRAMS "${CMAKE_BINARY_DIR}/bin/sys" COMPONENT RUNTIME DESTINATION "${CMAKE_SOURCE_DIR}/app/sys/")
 
+# install include file and libraries to test_c dir
+install(DIRECTORY ${ONLINECLUST_CLUST_INCLUDE} DESTINATION "/Users/taoyeandy/workspace/thesis/thesis2/osc_learning/test_c/onclust/clustering")
+
+install(DIRECTORY ${ONLINECLUST_DATAPROC_INCLUDE} DESTINATION "/Users/taoyeandy/workspace/thesis/thesis2/osc_learning/test_c/onclust/data_proc")
+
+install(DIRECTORY ${ONLINECLUST_PCLOUD_INCLUDE} DESTINATION "/Users/taoyeandy/workspace/thesis/thesis2/osc_learning/test_c/onclust/pcloud")
+
+install(DIRECTORY ${ONLINECLUST_HMP_INCLUDE} DESTINATION "/Users/taoyeandy/workspace/thesis/thesis2/osc_learning/test_c/onclust/hmp")
+
+install(DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} DESTINATION "/Users/taoyeandy/workspace/thesis/thesis2/osc_learning/test_c/onclust")
